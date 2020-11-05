@@ -1,0 +1,1777 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+
+        h4 {
+            text-align: left;
+        }
+
+        @media screen {
+
+            .headerLineTitle {
+                width: 1.5in;
+                display: inline-block;
+                margin: 0in;
+                margin-bottom: .0001pt;
+                font-size: 11.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: bold;
+            }
+
+            .headerLineText {
+                display: inline;
+                margin: 0in;
+                margin-bottom: .0001pt;
+                font-size: 11.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: normal;
+            }
+
+            .pageHeader {
+                font-size: 14.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: bold;
+                visibility: hidden;
+                display: none;
+            }
+        }
+
+        @media print {
+            .headerLineTitle {
+                width: 1.5in;
+                display: inline-block;
+                margin: 0in;
+                margin-bottom: .0001pt;
+                font-size: 11.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: bold;
+            }
+
+            .headerLineText {
+                display: inline;
+                margin: 0in;
+                margin-bottom: .0001pt;
+                font-size: 11.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: normal;
+            }
+
+            .pageHeader {
+                font-size: 14.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: bold;
+                visibility: visible;
+                display: block;
+            }
+
+        }
+    </style>
+</head>
+<body><span class="headerLineTitle">From:</span><span
+        class="headerLineText">Dan Abramov &lt;dan@overreacted.io&gt;</span><br><span
+        class="headerLineTitle">Sent:</span><span
+        class="headerLineText">Thu, 20 Aug 2020 00:43:03 +0000 (UTC)</span><br><span
+        class="headerLineTitle">To:</span><span class="headerLineText">***</span><br><span class="headerLineTitle">Subject:</span><span
+        class="headerLineText">[Just JavaScript] 07. Properties</span><br><br>
+
+<style>@media only screen and (min-width: 480px) {
+    .mj-column-px-600 {
+        width: 600px !important;
+        max-width: 600px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    table.mj-full-width-mobile {
+        width: 100% !important;
+    }
+
+    td.mj-full-width-mobile {
+        width: auto !important;
+    }
+}</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<div class="message-content" style="max-width:600px">
+    <div style="padding-bottom:10px">
+
+
+        <title>
+
+        </title>
+        <!--[if !mso]><!-- -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!--<![endif]-->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--[if mso]>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:AllowPNG/>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+        <![endif]-->
+        <!--[if lte mso 11]>
+        <style type="text/css">
+            .mj-outlook-group-fix {
+                width: 100% !important;
+            }
+        </style>
+        <![endif]-->
+
+        <!--[if !mso]><!-->
+        <link href="07.%20Properties_files/css.css" rel="stylesheet" type="text/css">
+        <link href="07.%20Properties_files/css_002.css" rel="stylesheet" type="text/css">
+
+        <!--<![endif]-->
+
+
+        <div style="padding-bottom:10px;background-color:#ffffff;">
+
+
+            <!--[if mso | IE]>
+            <table
+                    align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:100%;" width="100"
+            >
+                <tr>
+                    <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+            <![endif]-->
+
+
+            <div style="padding-bottom:10px;margin:0px auto;max-width:100%;">
+
+                <table role="presentation"
+                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;"
+                       cellspacing="0" cellpadding="0" border="0" align="center">
+                    <tbody>
+                    <tr>
+                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+                            <!--[if mso | IE]>
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+
+                                <tr>
+
+                                    <td
+                                            class="" style="vertical-align:top;width:600px;"
+                                    >
+                            <![endif]-->
+
+                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+
+                                <table role="presentation"
+                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                    <tbody>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Meet Sherlock Holmes, a world-renowned detective from London:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> sherlock = {
+  <span class="hljs-attr">surname</span>: <span class="hljs-string" style="color: #DD0795;">'Holmes'</span>,
+  <span class="hljs-attr">address</span>: { <span class="hljs-attr">city</span>: <span class="hljs-string"
+                                                                                       style="color: #DD0795;">'London'</span> }
+};
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                His friend John Watson has recently moved in to live with Sherlock:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> john = {
+  <span class="hljs-attr">surname</span>: <span class="hljs-string" style="color: #DD0795;">'Watson'</span>,
+  <span class="hljs-attr">address</span>: sherlock.address
+};
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Sherlock
+                                                is a brilliant detective but a difficult flatmate. One day, John
+                                                decides he’s had enough. John changes his surname and moves to live in
+                                                Malibu:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px">john.surname = <span class="hljs-string"
+                                                                                              style="color: #DD0795;">'Lennon'</span>;
+john.address.city = <span class="hljs-string" style="color: #DD0795;">'Malibu'</span>;
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Time for a small exercise. <strong>Write down your answers to these
+                                                questions:</strong>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-built_in"
+                                                                               style="color: #0067DB;">console</span>.log(sherlock.surname); <span
+              class="hljs-comment" style="color: #767391;">// ?</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(sherlock.address.city); <span
+                  class="hljs-comment" style="color: #767391;">// ?</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(john.surname); <span class="hljs-comment"
+                                                                                            style="color: #767391;">// ?</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(john.address.city); <span class="hljs-comment"
+                                                                                                 style="color: #767391;">// ?</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Before you scroll back up to re-read the code, I want you to approach it
+                                                in a particular way. Open a <a
+                                                    href="https://excalidraw.com/"
+                                                    style="text-decoration: none; border-bottom: 2px solid blue; color: blue;"
+                                                    url-id="1000963727">sketch app</a> or get paper and pen, and
+                                                <strong>sketch out your mental model of what happens on every
+                                                    line</strong>. It’s okay if you’re not sure <em>how</em> to
+                                                represent it. We haven’t yet discussed these topics so use your best
+                                                guess.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Then, with the help of your final sketch, answer the four questions
+                                                above.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <p style="margin-bottom:1em;display:block;margin:13px 0;font-size:1.8em;font-weight:bold;text-transform:uppercase;border:1px solid;text-align:center;padding:20px;text-decoration:none;color:#E80238;font-family:SourceSansPro, sans-serif">
+                                                    Spoilers Below</p>
+                                                <p style="margin-bottom:1em;display:block;margin:13px 0;padding:2px;color:#E80238;text-align:center">
+                                                    Don’t scroll further until you have written the answers to four
+                                                    questions.</p>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Now let’s check your answers:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-built_in"
+                                                                               style="color: #0067DB;">console</span>.log(sherlock.surname); <span
+              class="hljs-comment" style="color: #767391;">// "Holmes"</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(sherlock.address.city); <span
+                  class="hljs-comment" style="color: #767391;">// "Malibu"</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(john.surname); <span class="hljs-comment"
+                                                                                            style="color: #767391;">// "Lennon"</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(john.address.city); <span class="hljs-comment"
+                                                                                                 style="color: #767391;">// "Malibu"</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                This is not a typo — they are indeed <strong>both in Malibu</strong>.
+                                                It’s not so easy to get away from Sherlock! With a wrong mental model,
+                                                one might conclude that <code>sherlock.address.city</code> is <code>"London"</code>
+                                                — but it’s not.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                To see why, we need to learn how properties work in our JavaScript
+                                                universe.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:30px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:37.90px;line-height:40px;text-align:left;color:#021326;">
+                                                Properties
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                We’ve talked about objects before. For example, here is a
+                                                <code>sherlock</code> variable pointing to an object value. We create a
+                                                new object value by writing <code>{}</code>:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> sherlock = {};
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                In our universe, it might look like this:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="Variable pointing at an object"
+                                                             src="07.%20Properties_files/sherlock_empty.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                However, objects are primarily useful to <em>group</em> related data
+                                                together. For example, we might want to group different things we know
+                                                about Sherlock:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> sherlock = {
+  <span class="hljs-attr">surname</span>: <span class="hljs-string" style="color: #DD0795;">'Holmes'</span>,
+  <span class="hljs-attr">age</span>: <span class="hljs-number" style="color: #0067DB;">64</span>,
+};
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Here, <code>sherlock</code> is still a variable, but
+                                                <code>surname</code> and <code>age</code> are not. They are <em>properties</em>.
+                                                Unlike variables, properties <em>belong</em> to a particular object.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <strong>In our JavaScript universe, both variables and properties act
+                                                    like “wires”.</strong> However, the wires of properties <em>start
+                                                from objects</em> rather than from our code:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="Variable pointing at an object which points at other values via its properties"
+                                                             src="07.%20Properties_files/sherlock_props.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Here, we can see that the <code>sherlock</code>
+                                                <strong>variable</strong> points to an object we have created. That
+                                                object has two <strong>properties</strong>. Its <code>surname</code>
+                                                property points to the <code>"Holmes"</code> string value, and its
+                                                <code>age</code> property points to the <code>64</code> number value.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Importantly, properties don’t <em>contain</em> values — they
+                                                <em>point</em>
+                                                at them! It turns out that our universe is full of wires. Some of them
+                                                start in our code (variables), and others start from objects
+                                                (properties). All wires always point at values.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Before
+                                                reading this, you might have imagined that values live “inside” objects
+                                                because they appear “inside” in code. This intuition often leads to
+                                                mistakes, so we will be “thinking in wires” instead. Take one more look
+                                                at the code and the diagram. Make sure you’re comfortable with them
+                                                before you continue.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:27px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:28.4px;line-height:31px;text-align:left;color:#021326;">
+                                                Reading a Property
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                We can read a property’s current value by using the “dot notation”:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-built_in"
+                                                                               style="color: #0067DB;">console</span>.log(sherlock.age); <span
+              class="hljs-comment" style="color: #767391;">// 64</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Here, <code>sherlock.age</code> is our old friend — an
+                                                <em>expression</em>, a question to the JavaScript universe. To answer
+                                                it, JavaScript first follows the <code>sherlock</code> wire:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="Following the sherlock variable wire"
+                                                             src="07.%20Properties_files/sherlock_readage.gif"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                It leads to an object. From that object, JavaScript follows the <code>age</code>
+                                                property.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Our object’s <code>age</code> property points to <code>64</code>, so
+                                                <code>sherlock.age</code> results in <code>64</code>.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:27px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:28.4px;line-height:31px;text-align:left;color:#021326;">
+                                                Property Names
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Properties
+                                                have names. A single object can’t have two properties with the same
+                                                name. For example, our object can’t have two properties called
+                                                <code>age</code>.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                The property names are always case-sensitive! For example,
+                                                <code>age</code> and <code>Age</code> would be two completely different
+                                                properties from JavaScript’s point of view.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                If we don’t know a property name ahead of time but we have it in code as
+                                                a string value, we can use the <code>[]</code> “bracket notation” to
+                                                read it from an object:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> sherlock = { <span
+              class="hljs-attr">surname</span>: <span class="hljs-string" style="color: #DD0795;">'Holmes'</span>, <span
+              class="hljs-attr">age</span>: <span class="hljs-number" style="color: #0067DB;">64</span> };
+<span class="hljs-keyword" style="color: #700FB2;">let</span> propertyName = prompt(<span class="hljs-string"
+                                                                                          style="color: #DD0795;">'What do you want to know?'</span>);
+alert(sherlock[propertyName]); <span class="hljs-comment" style="color: #767391;">// Read property by its name</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Try this code in your browser console and enter <code>age</code> when
+                                                prompted.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:27px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:28.4px;line-height:31px;text-align:left;color:#021326;">
+                                                Assigning to a Property
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                What happens when we <em>assign</em> a value to a property?
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px">sherlock.age = <span class="hljs-number"
+                                                                                              style="color: #0067DB;">65</span>;
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Let’s split this code into the left and the right side, separated by
+                                                <code>=</code>.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <strong>First, we figure out which wire is on the left side: <code>sherlock.age</code>.</strong>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                We follow the <code>sherlock</code> wire, and then pick the
+                                                <code>age</code> property wire:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="Following the age property wire on the left side"
+                                                             src="07.%20Properties_files/sherlock_reassign_age-1.gif"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Note that we don’t <em>follow</em> the <code>age</code> wire to
+                                                <code>64</code>. We don’t care what its current value is. On the left
+                                                side of the assignment, we are looking for <strong>the wire
+                                                itself</strong>.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Remember which wire we picked? Carry on.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <strong>Next, we figure out which value is on the right side:
+                                                    <code>65</code>.</strong></div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Unlike the left side, the right side of an assignment always expresses a
+                                                <em>value</em>. In this example, the right side’s value is the number
+                                                value <code>65</code>. Let’s summon it:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="Evaluating the right side: 65"
+                                                             src="07.%20Properties_files/sherlock_reassign_age-2.gif"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Now we are ready to perform the assignment.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <strong>At last, we point the wire on the left side to the value on the
+                                                    right side:</strong></div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="Changing the age property wire to 65"
+                                                             src="07.%20Properties_files/sherlock_reassign_age-3.gif"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                And we’re done! From now on, reading <code>sherlock.age</code> would
+                                                give us <code>65</code>.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:27px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:28.4px;line-height:31px;text-align:left;color:#021326;">
+                                                Missing Properties
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                You might wonder what happens if we read a property that doesn't exist:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> sherlock = { <span
+              class="hljs-attr">surname</span>: <span class="hljs-string" style="color: #DD0795;">'Holmes'</span>, <span
+              class="hljs-attr">age</span>: <span class="hljs-number" style="color: #0067DB;">64</span> };
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(sherlock.boat); <span class="hljs-comment"
+                                                                                             style="color: #767391;">// ?</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                We know that <code>sherlock.boat</code> is a property expression. The
+                                                JavaScript universe follows certain rules to decide which value to
+                                                “answer” us with.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <strong>These rules look roughly like this:</strong></div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <ol>
+                                                    <li style="padding-bottom: 8px;">Figure out the value of the part
+                                                        before the dot (<code>.</code>).
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">If that value is <code>null</code>
+                                                        or <code>undefined</code>, throw an error immediately.
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">Check whether a property with that
+                                                        name exists in our object.<br>a. If <strong>it exists</strong>,
+                                                        answer with the value this property points to.<br>b. If <strong>it
+                                                            doesn’t exist</strong>, answer with the
+                                                        <code>undefined</code> value.
+                                                    </li>
+                                                </ol>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Note
+                                                these rules are a bit simplified, and we will need to amend them in the
+                                                future modules. Still, they already tell us a lot about how JavaScript
+                                                works!
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                For example, <code>sherlock</code> points to an object that <strong>doesn’t</strong>
+                                                have a <code>boat</code> property. So <code>sherlock.boat</code> gives
+                                                us <code>undefined</code> as an answer:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> sherlock = { <span
+              class="hljs-attr">surname</span>: <span class="hljs-string" style="color: #DD0795;">'Holmes'</span>, <span
+              class="hljs-attr">age</span>: <span class="hljs-number" style="color: #0067DB;">64</span> };
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(sherlock.boat); <span class="hljs-comment"
+                                                                                             style="color: #767391;">// undefined</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Note <strong>this does not mean</strong> that our object has a <code>boat</code>
+                                                property pointing to <code>undefined</code>! It only has two properties,
+                                                and neither of them is called <code>boat</code>:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="Variable pointing at an object which points at other values via its properties"
+                                                             src="07.%20Properties_files/sherlock_props.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                It is tempting to think <code>sherlock.boat</code> directly corresponds
+                                                to the concept of a property in our mental model, but <strong>that’s not
+                                                quite correct</strong>. It is a <em>question</em> to the JavaScript
+                                                engine — and so the engine <em>follows the rules</em> to answer it.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                It looks at the object that <code>sherlock</code> points to, sees that
+                                                it <strong>doesn’t</strong> have a <code>boat</code> property, and gives
+                                                us back the <code>undefined</code> value because <strong>that’s what the
+                                                rules say</strong>. There is no deeper reason to this: computers follow
+                                                the rules.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Scroll up and re-read the rules again. Can you apply them in practice?
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> sherlock = { <span
+              class="hljs-attr">surname</span>: <span class="hljs-string" style="color: #DD0795;">'Holmes'</span>, <span
+              class="hljs-attr">age</span>: <span class="hljs-number" style="color: #0067DB;">64</span> };
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(sherlock.boat.name); <span class="hljs-comment"
+                                                                                                  style="color: #767391;">// ?</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                What happens if we run this code? <strong>Don’t guess — follow the
+                                                rules.</strong>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Hint: there are two dots, so you need to follow the rules two times.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <p style="margin-bottom:1em;display:block;margin:13px 0;font-size:1.8em;font-weight:bold;text-transform:uppercase;border:1px solid;text-align:center;padding:20px;text-decoration:none;color:#E80238;font-family:SourceSansPro, sans-serif">
+                                                    Spoilers Below</p>
+                                                <p style="margin-bottom:1em;display:block;margin:13px 0;padding:2px;color:#E80238;text-align:center">
+                                                    Don’t scroll further until you have decided on an answer.</p>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                The answer is that calculating <code>sherlock.boat.name</code> <strong>throws
+                                                an error</strong>:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <ul>
+                                                    <li style="padding-bottom: 8px;">We need to first figure out the
+                                                        value of <code>sherlock.boat</code>.
+                                                        <mj-text>
+                                                            <ul style="padding-top: 8px;">
+                                                                <li style="padding-bottom: 8px;">To do that, we need to
+                                                                    figure out the value of <code>sherlock</code>.
+                                                                    <mj-text>
+                                                                        <ul style="padding-top: 8px;">
+                                                                            <li style="padding-bottom: 8px;">The wire
+                                                                                from <code>sherlock</code> variable
+                                                                                leads to an object.
+                                                                            </li>
+                                                                            <li style="padding-bottom: 8px;">Therefore,
+                                                                                the value of <code>sherlock</code> is
+                                                                                that object.
+                                                                            </li>
+                                                                        </ul>
+                                                                    </mj-text>
+                                                                </li>
+                                                                <li style="padding-bottom: 8px;">An object is not <code>null</code>
+                                                                    or <code>undefined</code>, so we keep going.
+                                                                </li>
+                                                                <li style="padding-bottom: 8px;">That object <strong>does
+                                                                    not</strong> have a <code>boat</code> property.
+                                                                </li>
+                                                                <li style="padding-bottom: 8px;">Therefore, the value of
+                                                                    <code>sherlock.boat</code> is <code>undefined</code>.
+                                                                </li>
+                                                            </ul>
+                                                        </mj-text>
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">We’ve got <code>undefined</code> on
+                                                        the left side of the dot (<code>.</code>).
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">The rules say that
+                                                        <code>null</code> or <code>undefined</code> on the left side is
+                                                        an error.
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> sherlock = { <span
+              class="hljs-attr">surname</span>: <span class="hljs-string" style="color: #DD0795;">'Holmes'</span>, <span
+              class="hljs-attr">age</span>: <span class="hljs-number" style="color: #0067DB;">64</span> };
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(sherlock.boat); <span class="hljs-comment"
+                                                                                             style="color: #767391;">// undefined</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(sherlock.boat.name); <span class="hljs-comment"
+                                                                                                  style="color: #767391;">// TypeError!</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                If this still seems confusing, scroll up and mechanically follow the
+                                                rules.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:30px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:37.90px;line-height:40px;text-align:left;color:#021326;">
+                                                Recap
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <ul>
+                                                    <li style="padding-bottom: 8px;">Properties are wires — a bit like
+                                                        variables. They both point at values. Unlike variables,
+                                                        properties <strong>start from objects</strong> in our universe.
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">Properties have names. Properties
+                                                        belong to particular objects. You can’t have more than one
+                                                        property with
+                                                        the same name on an object.
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">Generally, you can perform an
+                                                        assignment in three steps:
+                                                        <mj-text>
+                                                            <ol>
+                                                                <li style="padding-bottom: 8px;">Figure out which wire
+                                                                    is on the left.
+                                                                </li>
+                                                                <li style="padding-bottom: 8px;">Figure out which value
+                                                                    is on the right.
+                                                                </li>
+                                                                <li style="padding-bottom: 8px;">Point that wire to that
+                                                                    value.
+                                                                </li>
+                                                            </ol>
+                                                        </mj-text>
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">An expression like <code>obj.property</code>
+                                                        is calculated in three steps:
+                                                        <mj-text>
+                                                            <ol>
+                                                                <li style="padding-bottom: 8px;">Figure out which value
+                                                                    is on the left.
+                                                                </li>
+                                                                <li style="padding-bottom: 8px;">If it’s
+                                                                    <code>null</code> or <code>undefined</code>, throw
+                                                                    an error.
+                                                                </li>
+                                                                <li style="padding-bottom: 8px;">If that property
+                                                                    exists, the result is the value its wire points to.
+                                                                </li>
+                                                                <li style="padding-bottom: 8px;">If that property
+                                                                    doesn’t exist, the result is <code>undefined</code>.
+                                                                </li>
+                                                            </ol>
+                                                        </mj-text>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Note
+                                                that this mental model of properties is still a bit simplified. It is
+                                                good enough for the next few modules, but we will need to expand it in
+                                                the future.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                If
+                                                you got confused by the Sherlock Holmes example in the beginning, you
+                                                can optionally get back to it and try to follow it with our new mental
+                                                model. The next module will include a detailed walkthrough of it in case
+                                                you’re still not quite sure why it works this way. Try to get used to
+                                                seeing properties as wires.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:30px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:37.90px;line-height:40px;text-align:left;color:#021326;">
+                                                Exercises
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                This module also has exercises for you to practice!
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <a href="https://eggheadio.typeform.com/to/IDJBPQ"
+                                                   style="text-decoration: none; border-bottom: 2px solid blue; color: blue;"
+                                                   url-id="1000963736"><strong>Click here</strong> to solidify this
+                                                    mental model with a few short exercises.</a></div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <strong>Don’t skip them!</strong></div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Even
+                                                though you’re probably familiar with the concept of properties, these
+                                                exercises will help you cement the mental model we’re building. We need
+                                                this foundation before we can get to more complex topics.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                When you complete the exercises the next module will be sent
+                                                immediately.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Cheers,<br>
+                                                Dan
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <!--[if mso | IE]>
+                            </td>
+
+                            </tr>
+
+                            </table>
+                            <![endif]-->
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+            <!--[if mso | IE]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+
+
+        </div>
+
+
+    </div>
+    <p style="margin-bottom:1em;display:block;margin:13px 0">
+        <strong>
+            Next: <a href="./08.%20Mutation.html">08. Mutation</a>
+        </strong>
+    </p>
+    <small>
+        337 Garden Oaks Blvd #97429, Houston, TX 77018
+    </small>
+</div>
+</body>
+</html>

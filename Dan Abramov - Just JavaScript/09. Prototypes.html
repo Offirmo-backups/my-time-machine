@@ -1,0 +1,1836 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+
+        h4 {
+            text-align: left;
+        }
+
+        @media screen {
+
+            .headerLineTitle {
+                width: 1.5in;
+                display: inline-block;
+                margin: 0in;
+                margin-bottom: .0001pt;
+                font-size: 11.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: bold;
+            }
+
+            .headerLineText {
+                display: inline;
+                margin: 0in;
+                margin-bottom: .0001pt;
+                font-size: 11.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: normal;
+            }
+
+            .pageHeader {
+                font-size: 14.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: bold;
+                visibility: hidden;
+                display: none;
+            }
+        }
+
+        @media print {
+            .headerLineTitle {
+                width: 1.5in;
+                display: inline-block;
+                margin: 0in;
+                margin-bottom: .0001pt;
+                font-size: 11.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: bold;
+            }
+
+            .headerLineText {
+                display: inline;
+                margin: 0in;
+                margin-bottom: .0001pt;
+                font-size: 11.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: normal;
+            }
+
+            .pageHeader {
+                font-size: 14.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: bold;
+                visibility: visible;
+                display: block;
+            }
+
+        }
+    </style>
+</head>
+<body><span class="headerLineTitle">From:</span><span
+        class="headerLineText">Dan Abramov &lt;dan@overreacted.io&gt;</span><br><span
+        class="headerLineTitle">Sent:</span><span
+        class="headerLineText">Sat, 22 Aug 2020 00:52:49 +0000 (UTC)</span><br><span
+        class="headerLineTitle">To:</span><span class="headerLineText">***</span><br><span class="headerLineTitle">Subject:</span><span
+        class="headerLineText">[Just JavaScript] 09. Prototypes</span><br><br>
+
+<style>@media only screen and (min-width: 480px) {
+    .mj-column-px-600 {
+        width: 600px !important;
+        max-width: 600px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    table.mj-full-width-mobile {
+        width: 100% !important;
+    }
+
+    td.mj-full-width-mobile {
+        width: auto !important;
+    }
+}</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<div class="message-content" style="max-width:600px">
+    <div style="padding-bottom:10px">
+
+
+        <title>
+        </title>
+        <!--[if !mso]><!-- -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!--<![endif]-->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+        <!--[if mso]>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:AllowPNG/>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+        <![endif]-->
+        <!--[if lte mso 11]>
+        <style type="text/css">
+            .mj-outlook-group-fix {
+                width: 100% !important;
+            }
+        </style>
+        <![endif]-->
+        <!--[if !mso]><!-->
+        <link href="09.%20Prototypes_files/css_002.css" rel="stylesheet" type="text/css">
+        <link href="09.%20Prototypes_files/css.css" rel="stylesheet" type="text/css">
+
+        <!--<![endif]-->
+
+
+        <div style="padding-bottom:10px;background-color:#ffffff;">
+            <!--[if mso | IE]>
+            <table
+                    align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:100%;" width="100"
+            >
+                <tr>
+                    <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+            <![endif]-->
+            <div style="padding-bottom:10px;margin:0px auto;max-width:100%;">
+                <table role="presentation"
+                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;"
+                       cellspacing="0" cellpadding="0" border="0" align="center">
+                    <tbody>
+                    <tr>
+                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+                            <!--[if mso | IE]>
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+
+                                <tr>
+
+                                    <td
+                                            class="" style="vertical-align:top;width:600px;"
+                                    >
+                            <![endif]-->
+                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                                <table role="presentation"
+                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+                                    <tbody>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                In
+                                                the previous modules, we’ve covered objects, properties, and mutation.
+                                                It’s tempting to jump to other topics, but we’re not quite done with
+                                                objects yet!
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Here is a small riddle to check our mental model:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword" style="color: #700FB2;">let</span> pizza = {};
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(pizza.taste); <span class="hljs-comment"
+                                                                                           style="color: #767391;">// "pineapple"</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Ask yourself: is this possible?
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                We have just created an empty object with <code>{}</code>. We definitely
+                                                didn’t set any properties on it before logging. So it seems like <code>pizza.taste</code>
+                                                can’t point to <code>"pineapple"</code>. We would expect <code>pizza.taste</code>
+                                                to give us <code>undefined</code> instead. (We usually get <code>undefined</code>
+                                                when a property doesn’t exist, right?)
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                And yet, it <em>is</em> possible to add some code before these two lines
+                                                that would cause <code>pizza.taste</code> to be <code>"pineapple"</code>!
+                                                This may be a contrived example, but it shows that our mental model of
+                                                the JavaScript universe is incomplete.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                In this module, we’ll introduce the concept of <em>prototypes</em>.
+                                                Prototypes explain what happens in this puzzle. More importantly,
+                                                prototypes are at the heart of several other JavaScript features.
+                                                Occasionally people neglect learning them because they seem too unusual.
+                                                However, the core idea is remarkably simple.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:30px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:37.90px;line-height:40px;text-align:left;color:#021326;">
+                                                Prototypes
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Here’s a couple of variables pointing at a couple of objects:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword" style="color: #700FB2;">let</span> human = {
+  <span class="hljs-attr">teeth</span>: <span class="hljs-number" style="color: #0067DB;">32</span>
+};
+
+<span class="hljs-keyword" style="color: #700FB2;">let</span> gwen = {
+  <span class="hljs-attr">age</span>: <span class="hljs-number" style="color: #0067DB;">19</span>
+};
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                We can represent them visually in a familiar way:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+                                                        <img alt="Property" src="09.%20Prototypes_files/prop.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                In this example, <code>gwen</code> points at an object without a <code>teeth</code>
+                                                property. According to the rules we’ve learned, if we read it, we get
+                                                <code>undefined</code>:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-built_in" style="color: #0067DB;">console</span>.log(gwen.teeth); <span
+        class="hljs-comment" style="color: #767391;">// undefined</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                But the story doesn’t have to end here. Instead of the default behavior
+                                                of returning <code>undefined</code>, we can instruct JavaScript to <em>continue
+                                                searching for our missing property on another object</em>. We can do it
+                                                with one line of code:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword" style="color: #700FB2;">let</span> human = {
+  <span class="hljs-attr">teeth</span>: <span class="hljs-number" style="color: #0067DB;">32</span>
+};
+
+<span class="hljs-keyword" style="color: #700FB2;">let</span> gwen = {
+  <span class="hljs-comment" style="color: #767391;">// We added this line:</span>
+  <span class="hljs-attr">__proto__</span>: human,
+  <span class="hljs-attr">age</span>: <span class="hljs-number" style="color: #0067DB;">19</span>
+};
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                What is that mysterious <code>__proto__</code> property?
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                It represents the JavaScript concept of a <em>prototype</em>.
+                                                Any JavaScript object may choose another object as a prototype. We will
+                                                discuss what that means in practice very soon. For now, let’s think of
+                                                it as a special <code>__proto__</code> wire:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+                                                        <img alt="Prototype" src="09.%20Prototypes_files/proto.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Take
+                                                a moment to verify the diagram matches the code. We drew it just like
+                                                we did in the past. The only new thing is the mysterious
+                                                <code>__proto__</code> wire.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                By specifying <code>__proto__</code> (also known as our object’s <em>prototype</em>),
+                                                we instruct JavaScript to continue looking for missing properties on
+                                                that object instead.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:27px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:28.4px;line-height:31px;text-align:left;color:#021326;">
+                                                Prototypes in Action
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Earlier, when we went looking for <code>gwen.teeth</code>, we got <code>undefined</code>
+                                                because the <code>teeth</code> property doesn’t exist on the object that
+                                                <code>gwen</code> points at.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                But thanks to that <code>__proto__: human</code> line, the answer is
+                                                different now:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword" style="color: #700FB2;">let</span> human = {
+  <span class="hljs-attr">teeth</span>: <span class="hljs-number" style="color: #0067DB;">32</span>
+};
+
+<span class="hljs-keyword" style="color: #700FB2;">let</span> gwen = {
+  <span class="hljs-comment" style="color: #767391;">// "Look for other properties here"</span>
+  <span class="hljs-attr">__proto__</span>: human,
+  <span class="hljs-attr">age</span>: <span class="hljs-number" style="color: #0067DB;">19</span>
+};
+
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(gwen.teeth); <span class="hljs-comment"
+                                                                                          style="color: #767391;">// 32</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Now the sequence of steps looks like this:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+                                                        <img alt="Following prototype"
+                                                             src="09.%20Prototypes_files/proto_anim.gif"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <ol>
+                                                    <li style="padding-bottom: 8px;">Follow the <code>gwen</code> wire.
+                                                        It leads to an object.
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">Does this object have a
+                                                        <code>teeth</code> property?
+                                                        <mj-text>
+                                                            <ul>
+                                                                <li style="padding-bottom: 8px;">No.</li>
+                                                                <li style="padding-bottom: 8px;">
+                                                                    <strong>But it has a prototype.</strong> Let’s check
+                                                                    it out.
+                                                                </li>
+                                                            </ul>
+                                                        </mj-text>
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">Does <em>that</em> object have a
+                                                        <code>teeth</code> property?
+                                                        <mj-text>
+                                                            <ul>
+                                                                <li style="padding-bottom: 8px;">Yes, it points at
+                                                                    <code>32</code>.
+                                                                </li>
+                                                                <li style="padding-bottom: 8px;">Therefore, the result
+                                                                    of <code>gwen.teeth</code> is <code>32</code>.
+                                                                </li>
+                                                            </ul>
+                                                        </mj-text>
+                                                    </li>
+                                                </ol>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                This is similar to how you might say at work: “I don’t know, but Alice
+                                                might know”. With <code>__proto__</code>, you instruct JavaScript to
+                                                “ask another object”.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                To check your understanding so far, write down your answers:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword" style="color: #700FB2;">let</span> human = {
+  <span class="hljs-attr">teeth</span>: <span class="hljs-number" style="color: #0067DB;">32</span>
+};
+
+<span class="hljs-keyword" style="color: #700FB2;">let</span> gwen = {
+  <span class="hljs-attr">__proto__</span>: human,
+  <span class="hljs-attr">age</span>: <span class="hljs-number" style="color: #0067DB;">19</span>
+};
+
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(human.age); <span class="hljs-comment"
+                                                                                         style="color: #767391;">// ?</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(gwen.age); <span class="hljs-comment"
+                                                                                        style="color: #767391;">// ?</span>
+
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(human.teeth); <span class="hljs-comment"
+                                                                                           style="color: #767391;">// ?</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(gwen.teeth); <span class="hljs-comment"
+                                                                                          style="color: #767391;">// ?</span>
+
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(human.tail); <span class="hljs-comment"
+                                                                                          style="color: #767391;">// ?</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(gwen.tail); <span class="hljs-comment"
+                                                                                         style="color: #767391;">// ?</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <p style="margin-bottom:1em;display:block;margin:13px 0;font-size:1.8em;font-weight:bold;text-transform:uppercase;border:1px solid;text-align:center;padding:20px;text-decoration:none;color:#E80238;font-family:SourceSansPro, sans-serif">
+                                                    Spoilers Below</p>
+                                                <p style="margin-bottom:1em;display:block;margin:13px 0;padding:2px;color:#E80238;text-align:center">
+                                                    Don’t scroll further until you have written the answers to six
+                                                    questions.</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Now let’s check your answers.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                The <code>human</code> variable points at an object that doesn’t have an
+                                                <code>age</code> property, so <code>human.age</code> is
+                                                <code>undefined</code>. The <code>gwen</code> variable points at an
+                                                object that <em>does</em> have an <code>age</code> property. That wire
+                                                points at <code>19</code>, so the value of <code>gwen.age</code> is
+                                                <code>19</code>:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-built_in" style="color: #0067DB;">console</span>.log(human.age); <span
+        class="hljs-comment" style="color: #767391;">// undefined</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(gwen.age); <span class="hljs-comment"
+                                                                                        style="color: #767391;">// 19</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                The <code>human</code> variable points at object that has a
+                                                <code>teeth</code> property, so the value of <code>human.teeth</code> is
+                                                <code>32</code>. The <code>gwen</code> variable points at an object that
+                                                doesn’t have a <code>teeth</code> property. However, that object has a
+                                                prototype, which <em>does</em> have a <code>teeth</code> property. This
+                                                is why the value of <code>gwen.teeth</code> is also <code>32</code>.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-built_in" style="color: #0067DB;">console</span>.log(human.teeth); <span
+        class="hljs-comment" style="color: #767391;">// 32</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(gwen.teeth); <span class="hljs-comment"
+                                                                                          style="color: #767391;">// 32</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Neither of our objects have a <code>tail</code> property, so we get
+                                                <code>undefined</code> for both:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-built_in" style="color: #0067DB;">console</span>.log(human.tail); <span
+        class="hljs-comment" style="color: #767391;">// undefined</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(gwen.tail); <span class="hljs-comment"
+                                                                                         style="color: #767391;">// undefined</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Note how although the value of <code>gwen.teeth</code> is
+                                                <code>32</code>, it doesn’t mean <code>gwen</code> has a
+                                                <code>teeth</code> property! Indeed, in this example, <code>gwen</code>
+                                                <em>does not</em> have a <code>teeth</code> property. But its prototype
+                                                object — the same one <code>human</code> points at — does.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                This serves to remind us that <code>gwen.teeth</code> is an <em>expression</em>
+                                                — a question to the JavaScript universe — and JavaScript will follow a
+                                                sequence of steps to answer it. Now we know that these steps involve
+                                                looking at the prototype.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:27px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:28.4px;line-height:31px;text-align:left;color:#021326;">
+                                                The Prototype Chain
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                A prototype isn’t a special “thing” in JavaScript. A prototype is more
+                                                like a <em>relationship</em>. An object may point at another object as
+                                                its prototype.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                This
+                                                naturally leads to a question: but what if my object’s prototype has
+                                                its own prototype? And that prototype has its own prototype? Would that
+                                                work?
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                The answer is that this is <em>exactly</em> how it works!
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword" style="color: #700FB2;">let</span> mammal = {
+  <span class="hljs-attr">brainy</span>: <span class="hljs-literal" style="color: #0067DB;">true</span>,
+};
+
+<span class="hljs-keyword" style="color: #700FB2;">let</span> human = {
+  <span class="hljs-attr">__proto__</span>: mammal,
+  <span class="hljs-attr">teeth</span>: <span class="hljs-number" style="color: #0067DB;">32</span>
+};
+
+<span class="hljs-keyword" style="color: #700FB2;">let</span> gwen = {
+  <span class="hljs-attr">__proto__</span>: human,
+  <span class="hljs-attr">age</span>: <span class="hljs-number" style="color: #0067DB;">19</span>
+};
+
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(gwen.brainy); <span class="hljs-comment"
+                                                                                           style="color: #767391;">// true</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                We can see that JavaScript will search for the property on our object,
+                                                then on its prototype, then on <em>that</em> object’s prototype, and so
+                                                on. We would only get <code>undefined</code> if we ran out of prototypes
+                                                and still haven’t found our property.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+                                                        <img alt="Prototype Chain"
+                                                             src="09.%20Prototypes_files/protochain.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                This
+                                                is similar to how you might say at work: “I don’t know, but Alice might
+                                                know”. But then Alice might say “Actually I don’t know either, ask
+                                                Bob”. Eventually, you will either arrive at the answer or run out of
+                                                people to ask!
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                This sequence of objects to “visit” is known as our object’s <em>prototype
+                                                chain</em>. (However, unlike a chain you might wear, prototype chains
+                                                can’t be circular!)
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:27px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:28.4px;line-height:31px;text-align:left;color:#021326;">
+                                                Shadowing
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Consider this slightly modified example:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword" style="color: #700FB2;">let</span> human = {
+  <span class="hljs-attr">teeth</span>: <span class="hljs-number" style="color: #0067DB;">32</span>
+};
+
+<span class="hljs-keyword" style="color: #700FB2;">let</span> gwen = {
+  <span class="hljs-attr">__proto__</span>: human,
+  <span class="hljs-comment" style="color: #767391;">// This object has its own teeth property:</span>
+  <span class="hljs-attr">teeth</span>: <span class="hljs-number" style="color: #0067DB;">31</span>
+};
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Both objects define a property called <code>teeth</code>, so the results
+                                                are different:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-built_in" style="color: #0067DB;">console</span>.log(human.teeth); <span
+        class="hljs-comment" style="color: #767391;">// 32</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(gwen.teeth); <span class="hljs-comment"
+                                                                                          style="color: #767391;">// 31</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Note that <code>gwen.teeth</code> is <code>31</code>. If
+                                                <code>gwen</code> didn’t have its own <code>teeth</code> property, we
+                                                would look at the prototype. But because the object that
+                                                <code>gwen</code> points at has its <em>own</em> <code>teeth</code>
+                                                property, we don’t need to keep searching for the answer.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+                                                        <img alt="Shadowing" src="09.%20Prototypes_files/shadowing.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                In other words, once we find our property, <strong>we stop the
+                                                search</strong>.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                If you ever want to check if an object has its <em>own</em> property
+                                                wire with a certain name, you can call a built-in function called <code>hasOwnProperty</code>.
+                                                It returns <code>true</code> for “own” properties, and does not look at
+                                                the prototypes. In our last example, both objects have their own <code>teeth</code>
+                                                wires, so it is <code>true</code> for both:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-built_in" style="color: #0067DB;">console</span>.log(human.hasOwnProperty(<span
+        class="hljs-string" style="color: #DD0795;">'teeth'</span>)); <span class="hljs-comment"
+                                                                            style="color: #767391;">// true</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(gwen.hasOwnProperty(<span class="hljs-string"
+                                                                                                 style="color: #DD0795;">'teeth'</span>)); <span
+            class="hljs-comment" style="color: #767391;">// true</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:27px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:28.4px;line-height:31px;text-align:left;color:#021326;">
+                                                Assignment
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Consider this example:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword" style="color: #700FB2;">let</span> human = {
+  <span class="hljs-attr">teeth</span>: <span class="hljs-number" style="color: #0067DB;">32</span>
+};
+
+<span class="hljs-keyword" style="color: #700FB2;">let</span> gwen = {
+  <span class="hljs-attr">__proto__</span>: human,
+  <span class="hljs-comment" style="color: #767391;">// Note: no own teeth property</span>
+};
+
+gwen.teeth = <span class="hljs-number" style="color: #0067DB;">31</span>;
+
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(human.teeth); <span class="hljs-comment"
+                                                                                           style="color: #767391;">// ?</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(gwen.teeth); <span class="hljs-comment"
+                                                                                          style="color: #767391;">// ?</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Before the assignment, both expressions result in <code>32</code>:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+                                                        <img alt="Assignment: Step 1"
+                                                             src="09.%20Prototypes_files/step1.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Then we need to execute this assignment:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px">gwen.teeth = <span class="hljs-number"
+                                                                                      style="color: #0067DB;">31</span>;
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Now the question is which wire does <code>gwen.teeth</code> correspond
+                                                to? The answer is that, generally saying, assignments happen on the <em>object
+                                                itself</em>.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                So <code>gwen.teeth = 31</code> <em>creates a new own property</em>
+                                                called <code>teeth</code> on the object that <code>gwen</code> points
+                                                at. It doesn’t have any effect on the prototype:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+                                                        <img alt="Assignment: Step 2"
+                                                             src="09.%20Prototypes_files/step2.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                As a result, <code>human.teeth</code> is still <code>32</code>, but
+                                                <code>gwen.teeth</code> is now <code>31</code>:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-built_in" style="color: #0067DB;">console</span>.log(human.teeth); <span
+        class="hljs-comment" style="color: #767391;">// 32</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(gwen.teeth); <span class="hljs-comment"
+                                                                                          style="color: #767391;">// 31</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                We can summarize this behavior with a simple rule of thumb.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                When we <em>read</em>
+                                                a property that doesn’t exist on our object, then we’ll keep looking
+                                                for it on the prototype chain. If we don’t find it, we get <code>undefined</code>.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                But when we <em>write</em> a property that doesn’t exist on our object,
+                                                that will <em>create</em> that property on our object. Generally saying,
+                                                prototypes will <em>not</em> play a role.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:27px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:28.4px;line-height:31px;text-align:left;color:#021326;">
+                                                The Object Prototype
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                This object doesn’t have a prototype, right?
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword" style="color: #700FB2;">let</span> obj = {};
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Try running this in your browser’s console:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword" style="color: #700FB2;">let</span> obj = {};
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(obj.__proto__); <span class="hljs-comment"
+                                                                                             style="color: #767391;">// Play with it!</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Surprisingly, <code>obj.__proto__</code> is not <code>null</code> or
+                                                <code>undefined</code>! Instead, you’ll see a curious object with a
+                                                bunch of properties, including <code>hasOwnProperty</code>.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <strong>We’re going to call that special object the Object
+                                                    Prototype:</strong></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+                                                        <img alt="Root Prototype" src="09.%20Prototypes_files/root1.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                At first, this might be a bit mindblowing. Let that sink in. All this
+                                                time we were thinking that <code>{}</code> creates an “empty” object.
+                                                But it’s not so empty, after all! It has a hidden <code>__proto__</code>
+                                                wire that points at the Object Prototype by default.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                This explains why the JavaScript objects seem to have “built-in”
+                                                properties:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword" style="color: #700FB2;">let</span> human = {
+  <span class="hljs-attr">teeth</span>: <span class="hljs-number" style="color: #0067DB;">32</span>
+};
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(human.hasOwnProperty); <span class="hljs-comment"
+                                                                                                    style="color: #767391;">// (function)</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(human.toString); <span class="hljs-comment"
+                                                                                              style="color: #767391;">// // (function)</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                These
+                                                “built-in” properties are nothing more than normal properties that
+                                                exist on the Object Prototype. Our object’s prototype is the Object
+                                                Prototype, which is why we can access them. (Their implementations are
+                                                inside the JS engine.)
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:27px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:28.4px;line-height:31px;text-align:left;color:#021326;">
+                                                An Object with No Prototype
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                We’ve just learned that all objects created with the <code>{}</code>
+                                                syntax have the special <code>__proto__</code> wire set to a default
+                                                Object Prototype. But we also know that we can customize the <code>__proto__</code>.
+                                                You might wonder: can we set it to <code>null</code>?
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword" style="color: #700FB2;">let</span> weirdo = {
+  <span class="hljs-attr">__proto__</span>: <span class="hljs-literal" style="color: #0067DB;">null</span>
+};
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                The
+                                                answer is yes — this will produce an object that truly doesn’t have a
+                                                prototype, at all. As a result, it doesn’t even have built-in object
+                                                methods:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-built_in" style="color: #0067DB;">console</span>.log(weirdo.hasOwnProperty); <span
+        class="hljs-comment" style="color: #767391;">// undefined</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(weirdo.toString); <span class="hljs-comment"
+                                                                                               style="color: #767391;">// undefined</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                You
+                                                won’t often want to create objects like this, if at all. However, the
+                                                Object Prototype itself is exactly such an object. It is an object with
+                                                no prototype.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:27px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:28.4px;line-height:31px;text-align:left;color:#021326;">
+                                                Polluting the Prototype
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Now
+                                                we know that all JavaScript objects get the same prototype by default.
+                                                Let’s briefly revisit our example from the module about Mutation:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+                                                        <img alt="Root Prototype for several objects"
+                                                             src="09.%20Prototypes_files/root2.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                This
+                                                picture gives us an interesting insight. If JavaScript searches for
+                                                missing properties on the prototype, and most objects share the same
+                                                prototype, can we make new properties “appear” on all objects by
+                                                mutating that prototype?
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Let’s add these two lines of code:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword" style="color: #700FB2;">let</span> obj = {};
+obj.__proto__.smell = <span class="hljs-string" style="color: #DD0795;">'banana'</span>;
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                We mutated the Object Prototype by adding a <code>smell</code> property
+                                                to it. As a result, both detectives now appear to be using a
+                                                banana-flavored perfume:
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+<pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+        style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-built_in" style="color: #0067DB;">console</span>.log(sherlock.smell); <span
+        class="hljs-comment" style="color: #767391;">// "banana"</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(watson.smell); <span class="hljs-comment"
+                                                                                            style="color: #767391;">// "banana"</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+                                                        <img alt="Prototype pollution"
+                                                             src="09.%20Prototypes_files/pollution.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Mutating a shared prototype like we just did is called <em>prototype
+                                                pollution</em>.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                In
+                                                the past, prototype pollution was a popular way to extend JavaScript
+                                                with custom features. However, over the years the web community realized
+                                                that it is fragile and makes it hard to <a
+                                                    href="https://esdiscuss.org/topic/having-a-non-enumerable-array-prototype-contains-may-not-be-web-compatible"
+                                                    style="text-decoration: none; border-bottom: 2px solid blue; color: blue;"
+                                                    url-id="1225408556">add new language features</a>. Prefer to avoid
+                                                it.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Now you can solve the Pineapple Pizza Puzzle from the beginning of this
+                                                module! Check your solution in DevTools.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:30px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:37.90px;line-height:40px;text-align:left;color:#021326;">
+                                                <code>__proto__</code> vs <code>prototype</code>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                You might be wondering: what in the world is the <code>prototype</code>
+                                                property? You might have seen it <a
+                                                    href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter"
+                                                    style="text-decoration: none; border-bottom: 2px solid blue; color: blue;"
+                                                    url-id="1228064440">in the MDN page titles</a>.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Bad news: the <code>prototype</code> property is almost unrelated to the
+                                                core idea of prototypes! It’s more related to the <code>new</code>
+                                                operator, which we haven’t used yet.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Remember that <strong><code>__proto__</code> means an object’s prototype</strong>.
+                                                The <code>prototype</code> property and the <code>new</code> operator
+                                                are a whole different topic we’ll skip for now.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:27px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:28.4px;line-height:31px;text-align:left;color:#021326;">
+                                                Why Does This Matter?
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                In practice, you probably won’t use prototypes in your code directly.
+                                                (In fact, even using the <code>__proto__</code> syntax directly itself
+                                                is <a
+                                                    href="https://2ality.com/2015/09/proto-es6.html"
+                                                    style="text-decoration: none; border-bottom: 2px solid blue; color: blue;"
+                                                    url-id="1225408557">discouraged</a>.)
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Prototypes
+                                                are a bit unusual, and most people and frameworks never really fully
+                                                embraced them as a paradigm. Instead, people often used prototypes as
+                                                mere building blocks for a traditional “class inheritance” model that’s
+                                                popular in other programming languages. In fact, it was so common that
+                                                JavaScript added a class syntax as a convention that “hides” prototypes
+                                                out of sight.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Still, you will notice prototypes hiding “beneath the surface” of
+                                                classes and other JavaScript features. For example, here is a <a
+                                                    href="https://gist.github.com/gaearon/a25fd42a1e6b4cc24851978df0a36571"
+                                                    style="text-decoration: none; border-bottom: 2px solid blue; color: blue;"
+                                                    url-id="1225408558">snippet</a> of a JavaScript class rewritten with
+                                                <code>__proto__</code> to demonstrate what’s happening under the hood.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Personally,
+                                                I don’t use a lot of classes in my daily coding, and I rarely deal with
+                                                prototypes directly either. However, it helps to know how those
+                                                features build on each other, and what happens when I read or set a
+                                                property on an object.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:30px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:37.90px;line-height:40px;text-align:left;color:#021326;">
+                                                Recap
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <ul>
+                                                    <li style="padding-bottom: 8px;">When reading <code>obj.prop</code>,
+                                                        if <code>obj</code> doesn’t have a <code>prop</code> property,
+                                                        JavaScript will look for <code>obj.__proto__.prop</code>, then
+                                                        it will look for <code>obj.__proto__.__proto__.prop</code>, and
+                                                        so on, until it either finds our property or reaches the end of
+                                                        the prototype chain.
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">When writing to
+                                                        <code>obj.prop</code>, JavaScript will usually write to the
+                                                        object directly instead of traversing the prototype chain.
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">We can use <code>obj.hasOwnProperty('prop')</code>
+                                                        to determine whether our object has an <em>own</em> property
+                                                        called <code>prop</code>. In other words, it means there is a
+                                                        property wire called <code>prop</code> attached to that object
+                                                        directly.
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">We can “pollute” a prototype shared
+                                                        by
+                                                        many objects by mutating it. We can even do this to the Object
+                                                        Prototype
+                                                        — the default prototype for <code>{}</code> objects! But we
+                                                        shouldn’t do that unless we’re pranking our colleagues.
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">You probably won’t use prototypes
+                                                        much
+                                                        directly in practice. However, they are fundamental to how
+                                                        JavaScript
+                                                        objects work, so it is handy to understand their underlying
+                                                        mechanics.
+                                                        Some advanced JavaScript features, including classes, can be
+                                                        expressed
+                                                        in terms of prototypes.
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:30px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:37.90px;line-height:40px;text-align:left;color:#021326;">
+                                                Exercises
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                This module also has exercises for you to practice!
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <a href="https://eggheadio.typeform.com/to/S7p8NB"
+                                                   style="text-decoration: none; border-bottom: 2px solid blue; color: blue;"
+                                                   url-id="1225408559"><strong>Click here</strong> to solidify this
+                                                    mental model with a few short exercises.</a></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <strong>Don’t skip them!</strong></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Even
+                                                though you’re probably familiar with the concept of prototypes, these
+                                                exercises will help you cement the mental model we’re building. We need
+                                                this foundation before we can get to more complex topics.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Finish the exercises and you'll receive the final module in this season
+                                                of Just JavaScript.
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Cheers, Dan
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--[if mso | IE]>
+                            </td>
+
+                            </tr>
+
+                            </table>
+                            <![endif]-->
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--[if mso | IE]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+
+
+    </div>
+    <p style="margin-bottom:1em;display:block;margin:13px 0">
+        <strong>
+            Next: <a href="./10.%20Goodbye%20for%20now..html">10. Goodbye for now.</a>
+        </strong>
+    </p>
+    <small>
+        337 Garden Oaks Blvd #97429, Houston, TX 77018
+    </small>
+</div>
+</body>
+</html>

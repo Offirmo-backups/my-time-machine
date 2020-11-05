@@ -1,0 +1,2271 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+
+        h4 {
+            text-align: left;
+        }
+
+        @media screen {
+
+            .headerLineTitle {
+                width: 1.5in;
+                display: inline-block;
+                margin: 0in;
+                margin-bottom: .0001pt;
+                font-size: 11.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: bold;
+            }
+
+            .headerLineText {
+                display: inline;
+                margin: 0in;
+                margin-bottom: .0001pt;
+                font-size: 11.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: normal;
+            }
+
+            .pageHeader {
+                font-size: 14.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: bold;
+                visibility: hidden;
+                display: none;
+            }
+        }
+
+        @media print {
+            .headerLineTitle {
+                width: 1.5in;
+                display: inline-block;
+                margin: 0in;
+                margin-bottom: .0001pt;
+                font-size: 11.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: bold;
+            }
+
+            .headerLineText {
+                display: inline;
+                margin: 0in;
+                margin-bottom: .0001pt;
+                font-size: 11.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: normal;
+            }
+
+            .pageHeader {
+                font-size: 14.0pt;
+                font-family: "Calibri", "sans-serif";
+                font-weight: bold;
+                visibility: visible;
+                display: block;
+            }
+
+        }
+    </style>
+</head>
+<body><span class="headerLineTitle">From:</span><span
+        class="headerLineText">Dan Abramov &lt;dan@overreacted.io&gt;</span><br><span
+        class="headerLineTitle">Sent:</span><span
+        class="headerLineText">Tue, 18 Aug 2020 00:32:35 +0000 (UTC)</span><br><span
+        class="headerLineTitle">To:</span><span class="headerLineText">***</span><br><span class="headerLineTitle">Subject:</span><span
+        class="headerLineText">[Just JavaScript] 05. Counting the Values (Part 2)</span><br><br>
+
+<style>@media only screen and (min-width: 480px) {
+    .mj-column-px-600 {
+        width: 600px !important;
+        max-width: 600px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    table.mj-full-width-mobile {
+        width: 100% !important;
+    }
+
+    td.mj-full-width-mobile {
+        width: auto !important;
+    }
+}</style>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<div class="message-content" style="max-width:600px">
+    <div style="padding-bottom:10px">
+
+
+        <title>
+
+        </title>
+        <!--[if !mso]><!-- -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!--<![endif]-->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!--[if mso]>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:AllowPNG/>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+        <![endif]-->
+        <!--[if lte mso 11]>
+        <style type="text/css">
+            .mj-outlook-group-fix {
+                width: 100% !important;
+            }
+        </style>
+        <![endif]-->
+
+        <!--[if !mso]><!-->
+        <link href="05.%20Counting%20the%20Values%20(Part%202)_files/css_002.css" rel="stylesheet" type="text/css">
+        <link href="05.%20Counting%20the%20Values%20(Part%202)_files/css.css" rel="stylesheet" type="text/css">
+
+        <!--<![endif]-->
+
+
+        <div style="padding-bottom:10px;background-color:#ffffff;">
+
+
+            <!--[if mso | IE]>
+            <table
+                    align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:100%;" width="100"
+            >
+                <tr>
+                    <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+            <![endif]-->
+
+
+            <div style="padding-bottom:10px;margin:0px auto;max-width:100%;">
+
+                <table role="presentation"
+                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:100%;"
+                       cellspacing="0" cellpadding="0" border="0" align="center">
+                    <tbody>
+                    <tr>
+                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+                            <!--[if mso | IE]>
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+
+                                <tr>
+
+                                    <td
+                                            class="" style="vertical-align:top;width:600px;"
+                                    >
+                            <![endif]-->
+
+                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+
+                                <table role="presentation"
+                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                    <tbody>
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Without further ado, let’s resume our tour of the JavaScript universe!
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="celestial spheres of javascript values"
+                                                             src="05.%20Counting%20the%20Values%20(Part%202)_files/celestialspheres-v2.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                In
+                                                the previous module, we’ve looked at Undefined, Null, Booleans, and
+                                                Numbers. We will now continue counting values — starting with BigInts.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:27px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:28.4px;line-height:31px;text-align:left;color:#021326;">
+                                                BigInts
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="big ints"
+                                                             src="05.%20Counting%20the%20Values%20(Part%202)_files/bigints-v2.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                BigInts
+                                                were only recently added to JavaScript, so you won’t see them used
+                                                widely yet. If you use an older browser, they won’t work. Regular
+                                                numbers can’t represent large integers with precision, so BigInts <a
+                                                    href="https://v8.dev/features/bigint"
+                                                    style="text-decoration: none; border-bottom: 2px solid blue; color: blue;"
+                                                    url-id="897756425">fill that gap</a> (literally):
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> alot = <span
+              class="hljs-number" style="color: #0067DB;">9007199254740991n</span>; <span class="hljs-comment"
+                                                                                          style="color: #767391;">// Notice n at the end</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(alot + <span class="hljs-number"
+                                                                                    style="color: #0067DB;">1n</span>); <span
+                  class="hljs-comment" style="color: #767391;">// 9007199254740992n</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(alot + <span class="hljs-number"
+                                                                                    style="color: #0067DB;">2n</span>); <span
+                  class="hljs-comment" style="color: #767391;">// 9007199254740993n</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(alot + <span class="hljs-number"
+                                                                                    style="color: #0067DB;">3n</span>); <span
+                  class="hljs-comment" style="color: #767391;">// 9007199254740994n</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(alot + <span class="hljs-number"
+                                                                                    style="color: #0067DB;">4n</span>); <span
+                  class="hljs-comment" style="color: #767391;">// 9007199254740995n</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(alot + <span class="hljs-number"
+                                                                                    style="color: #0067DB;">5n</span>); <span
+                  class="hljs-comment" style="color: #767391;">// 9007199254740996n</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                No
+                                                funny business with the rounding! This is great for financial
+                                                calculations where precision is especially important. Keep in mind that
+                                                nothing is free. Operations with <em>truly</em> huge numbers may take
+                                                time and resources.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                How many BigInts are there in our universe? The specification says they
+                                                have an <em>arbitrary precision</em>. This means that <strong>in our
+                                                JavaScript universe, there is an infinite number of BigInts — one for
+                                                each integer in math</strong>.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Yeah...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                If
+                                                this sounds strange, consider that you’re already comfortable with the
+                                                idea of there being infinite integers in math. (If you’re not, give it a
+                                                few moments!) It’s not much of a leap then from a “math universe” to a
+                                                “JavaScript universe”.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <em>(And from there, we can go straight to the <a
+                                                        href="https://www.goldennumber.net/wp-content/uploads/pepsi-arnell-021109.pdf"
+                                                        style="text-decoration: none; border-bottom: 2px solid blue; color: blue;"
+                                                        url-id="897756673">Pepsi Universe</a>.)</em></div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Of
+                                                course, in practice, we can’t fit all the possible BigInts inside the
+                                                computer memory. If we tried, at some point it would crash or freeze.
+                                                But conceptually, Count von Count could be busy counting BigInts for
+                                                eternity and never stop.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:27px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:28.4px;line-height:31px;text-align:left;color:#021326;">
+                                                Strings
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="Illustration of strings"
+                                                             src="05.%20Counting%20the%20Values%20(Part%202)_files/strings-v2.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Strings
+                                                represent text in JavaScript. There are three ways to write strings
+                                                (single quotes, double quotes, and backticks), but the result is the
+                                                same:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-built_in"
+                                                                               style="color: #0067DB;">console</span>.log(<span
+              class="hljs-keyword" style="color: #700FB2;">typeof</span>(<span class="hljs-string"
+                                                                               style="color: #DD0795;">"こんにちは"</span>)); <span
+              class="hljs-comment" style="color: #767391;">// "string"</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(<span class="hljs-keyword"
+                                                                             style="color: #700FB2;">typeof</span>(<span
+                  class="hljs-string" style="color: #DD0795;">'こんにちは'</span>)); <span class="hljs-comment"
+                                                                                      style="color: #767391;">// "string"</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(<span class="hljs-keyword"
+                                                                             style="color: #700FB2;">typeof</span>(<span
+                  class="hljs-string" style="color: #DD0795;">`こんにちは`</span>)); <span class="hljs-comment"
+                                                                                      style="color: #767391;">// "string"</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                An empty string is a string, too:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-built_in"
+                                                                               style="color: #0067DB;">console</span>.log(<span
+              class="hljs-keyword" style="color: #700FB2;">typeof</span>(<span class="hljs-string"
+                                                                               style="color: #DD0795;">''</span>)); <span
+              class="hljs-comment" style="color: #767391;">// "string"</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:22px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:24px;line-height:26px;text-align:left;color:#021326;">
+                                                Strings Aren’t Objects
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                All strings have a few built-in properties.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> cat = <span
+              class="hljs-string" style="color: #DD0795;">'Cheshire'</span>;
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(cat.length); <span class="hljs-comment"
+                                                                                          style="color: #767391;">// 8</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(cat[<span class="hljs-number"
+                                                                                 style="color: #0067DB;">0</span>]); <span
+                  class="hljs-comment" style="color: #767391;">// "C"</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(cat[<span class="hljs-number"
+                                                                                 style="color: #0067DB;">1</span>]); <span
+                  class="hljs-comment" style="color: #767391;">// "h"</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                This
+                                                doesn’t mean that strings are objects! String properties are special
+                                                and don’t behave the way object properties do. For example, you can’t
+                                                assign anything to <code>cat[0]</code>. Strings are primitives, and all
+                                                primitives are immutable.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:22px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:24px;line-height:26px;text-align:left;color:#021326;">
+                                                A Value for Every Conceivable String
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <strong>In our universe, there is a distinct value for every conceivable
+                                                    string.</strong>
+                                                Yes, this includes your grandmother’s maiden name, the fanfic you
+                                                published ten years ago under an alias, and the script of Matrix 5 which
+                                                hasn’t been written yet.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Of course, all possible strings can’t literally fit inside a computer
+                                                memory chip. But <em>the idea</em> of every possible string can fit
+                                                inside your head. Our JavaScript universe is a model for humans, not for
+                                                computers!
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                This might prompt a question. Does this code <em>create</em> a string?
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-comment"
+                                                                               style="color: #767391;">// Try it in your console</span>
+<span class="hljs-keyword" style="color: #700FB2;">let</span> answer = prompt(<span class="hljs-string"
+                                                                                    style="color: #DD0795;">'Enter your name'</span>);
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(answer); <span class="hljs-comment"
+                                                                                      style="color: #767391;">// ?</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Or does it merely <em>summon</em> a string that already exists in our
+                                                universe?
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                The answer to this question depends on whether we’re studying JavaScript
+                                                “from the outside” or “from the inside”.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <em>Outside</em> our mental model, the answer depends on a specific
+                                                implementation. Whether a string is represented as a single block of
+                                                memory, multiple blocks, or <a
+                                                    href="https://en.wikipedia.org/wiki/Rope_(data_structure)"
+                                                    style="text-decoration: none; border-bottom: 2px solid blue; color: blue;"
+                                                    url-id="897756839">a rope</a>, is up to the JavaScript engine.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                But <em>inside</em>
+                                                our mental model, this question doesn’t mean anything. We can’t set up
+                                                an experiment to say whether strings “get created” or “get summoned”
+                                                within our JavaScript universe.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                To keep our mental model simple, we will say that <strong>all
+                                                conceivable string values already exist from the beginning — one value
+                                                for every distinct string.</strong>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:27px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:28.4px;line-height:31px;text-align:left;color:#021326;">
+                                                Symbols
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Symbols are a relatively recent addition to the language.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> alohomora = <span
+              class="hljs-built_in" style="color: #0067DB;">Symbol</span>();
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(<span class="hljs-keyword"
+                                                                             style="color: #700FB2;">typeof</span>(alohomora)); <span
+                  class="hljs-comment" style="color: #767391;">// "symbol"</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                It’s
+                                                hard to explain their purpose and behavior without diving deeper into
+                                                objects and properties, so for now we’re going to skip them. Sorry,
+                                                symbols!
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="symbols coming soon sign"
+                                                             src="05.%20Counting%20the%20Values%20(Part%202)_files/sym-comingsoon.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:27px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:28.4px;line-height:31px;text-align:left;color:#021326;">
+                                                Objects
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="objects"
+                                                             src="05.%20Counting%20the%20Values%20(Part%202)_files/objects.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                At last, we got to objects!
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                This includes arrays, dates, RegExps, and other non-primitive values:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-built_in"
+                                                                               style="color: #0067DB;">console</span>.log(<span
+              class="hljs-keyword" style="color: #700FB2;">typeof</span>({})); <span class="hljs-comment"
+                                                                                     style="color: #767391;">// "object"</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(<span class="hljs-keyword"
+                                                                             style="color: #700FB2;">typeof</span>([])); <span
+                  class="hljs-comment" style="color: #767391;">// "object"</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(<span class="hljs-keyword"
+                                                                             style="color: #700FB2;">typeof</span>(<span
+                  class="hljs-keyword" style="color: #700FB2;">new</span> <span class="hljs-built_in"
+                                                                                style="color: #0067DB;">Date</span>())); <span
+                  class="hljs-comment" style="color: #767391;">// "object"</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(<span class="hljs-keyword"
+                                                                             style="color: #700FB2;">typeof</span>(<span
+                  class="hljs-regexp" style="color: #067389;">/\d+/</span>)); <span class="hljs-comment"
+                                                                                    style="color: #767391;">// "object"</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(<span class="hljs-keyword"
+                                                                             style="color: #700FB2;">typeof</span>(<span
+                  class="hljs-built_in" style="color: #0067DB;">Math</span>)); <span class="hljs-comment"
+                                                                                     style="color: #767391;">// "object"</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Unlike everything before, objects are <em>not</em> primitive values.
+                                                This also means that by default, they’re mutable. We can access their
+                                                properties with <code>.</code> or <code>[]</code>:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> rapper = { <span
+              class="hljs-attr">name</span>: <span class="hljs-string" style="color: #DD0795;">'Malicious'</span> };
+rapper.name = <span class="hljs-string" style="color: #DD0795;">'Malice'</span>; <span class="hljs-comment"
+                                                                                       style="color: #767391;">// Dot notation</span>
+rapper[<span class="hljs-string" style="color: #DD0795;">'name'</span>] = <span class="hljs-string"
+                                                                                style="color: #DD0795;">'No Malice'</span>; <span
+                  class="hljs-comment" style="color: #767391;">// Bracket notation</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                We
+                                                haven’t talked about properties in detail yet, so your mental model
+                                                about them might be fuzzy. We will return to properties in a future
+                                                module.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:22px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:24px;line-height:26px;text-align:left;color:#021326;">
+                                                Making Our Own Objects
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                There is one thing in particular that makes Count von Count excited
+                                                about objects. <strong>We can make more of them! We can make our own
+                                                objects.</strong>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                In our mental model, all of the primitive values we’ve discussed —
+                                                <code>null</code>, <code>undefined</code>,
+                                                booleans, numbers, and strings — have “always existed”. We can’t “make”
+                                                a new string or a new number, we can only “summon” that value:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> sisters = <span
+              class="hljs-number" style="color: #0067DB;">3</span>;
+<span class="hljs-keyword" style="color: #700FB2;">let</span> musketeers = <span class="hljs-number"
+                                                                                 style="color: #0067DB;">3</span>;
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="Same number value"
+                                                             src="05.%20Counting%20the%20Values%20(Part%202)_files/3sisters.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                What makes objects different is that we <em>can</em> create more of
+                                                them. <strong>Every time we use the <code>{}</code> object literal, we
+                                                <em>create</em> a brand new object value:</strong>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> shrek = {};
+<span class="hljs-keyword" style="color: #700FB2;">let</span> donkey = {};
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="Different object value"
+                                                             src="05.%20Counting%20the%20Values%20(Part%202)_files/shrek-donkey.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                The same goes for arrays, dates, and any other objects. For example, the
+                                                <code>[]</code> array literal <em>creates</em> a new array value — a
+                                                value that never existed before.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:22px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:24px;line-height:26px;text-align:left;color:#021326;">
+                                                Do Objects Disappear?
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                You
+                                                might wonder: do objects ever disappear, or do they hang around
+                                                forever? JavaScript is designed in a way that we can’t tell one way or
+                                                the other from inside our code. For example, we can’t <em>destroy</em>
+                                                an object:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> junk = {};
+junk = <span class="hljs-literal" style="color: #0067DB;">null</span>; <span class="hljs-comment"
+                                                                             style="color: #767391;">// Doesn't necessarily destroy an object</span>
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Instead, JavaScript is a garbage-collected language.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                This means that although we can’t destroy an object, it <em>might</em>
+                                                eventually “disappear” if there is no way to reach it by following the
+                                                wires from our code.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="garbage collection"
+                                                             src="05.%20Counting%20the%20Values%20(Part%202)_files/garbagecollection-optim.gif"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                JavaScript doesn’t offer guarantees about <em>when</em> garbage
+                                                collection happens.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Unless
+                                                you’re trying to figure out why an app is using too much memory, you
+                                                don’t need to think about garbage collection too often. I only mention
+                                                it here so that you know that we can create objects — but we cannot
+                                                destroy them.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <em>In
+                                                    my universe, objects and functions float closest to my code. This
+                                                    reminds me that I can manipulate them and even make more of
+                                                    them.</em></div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:27px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:28.4px;line-height:31px;text-align:left;color:#021326;">
+                                                Functions
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="functions"
+                                                             src="05.%20Counting%20the%20Values%20(Part%202)_files/functions.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                It is particularly strange to think about functions as values that are
+                                                separate from my code. After all, they <em>are</em> my code. Or are they
+                                                not?
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:22px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:24px;line-height:26px;text-align:left;color:#021326;">
+                                                Functions Are Values
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                We
+                                                define functions so that we can call them later and run the code inside
+                                                them. However, to really understand functions in JavaScript, we need to
+                                                forget about <em>why</em> they’re useful for a second. Instead, we will
+                                                think about functions as yet another kind of value: a number, an object,
+                                                <em>a function</em>.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                To understand functions, we will compare them to numbers and objects.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                First, consider this <code>for</code> loop that runs <code>console.log(2)</code>
+                                                seven times:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">for</span> (<span
+              class="hljs-keyword" style="color: #700FB2;">let</span> i = <span class="hljs-number"
+                                                                                style="color: #0067DB;">0</span>; i &lt; <span
+              class="hljs-number" style="color: #0067DB;">7</span>; i++) {
+  <span class="hljs-built_in" style="color: #0067DB;">console</span>.log(<span class="hljs-number"
+                                                                               style="color: #0067DB;">2</span>);
+}
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <strong>How many different values does it pass to
+                                                    <code>console.log</code>?</strong> To answer this, let’s recall what
+                                                <code>2</code>
+                                                means when we write it down. It is a number literal. A literal is an
+                                                expression — a question to our universe. There is only one value for
+                                                every number in our universe, so it “answers” our question by
+                                                “summoning” the same value for the number <code>2</code> every time.
+                                                <strong>So the answer is one value.</strong> We will see the log seven
+                                                times — but we are passing the same value in each call.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Now let’s briefly revisit objects.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Here is another <code>for</code> loop that runs
+                                                <code>console.log({})</code> seven times:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">for</span> (<span
+              class="hljs-keyword" style="color: #700FB2;">let</span> i = <span class="hljs-number"
+                                                                                style="color: #0067DB;">0</span>; i &lt; <span
+              class="hljs-number" style="color: #0067DB;">7</span>; i++) {
+  <span class="hljs-built_in" style="color: #0067DB;">console</span>.log({});
+}
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <strong>How many different values does it pass to
+                                                    <code>console.log</code> now?</strong> Here, too, <code>{}</code> is
+                                                a literal — except it’s an <em>object literal</em>. As we just learned,
+                                                the JavaScript universe doesn’t “answer” an object literal by summoning
+                                                anything. Instead, it <em>creates</em> a new object value — which will
+                                                be the result of the <code>{}</code> object literal. <strong>So the code
+                                                above creates and logs seven completely distinct object values.</strong>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Let that sink in.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Now let’s have a look at functions.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">for</span> (<span
+              class="hljs-keyword" style="color: #700FB2;">let</span> i = <span class="hljs-number"
+                                                                                style="color: #0067DB;">0</span>; i &lt; <span
+              class="hljs-number" style="color: #0067DB;">7</span>; i++) {
+  <span class="hljs-built_in" style="color: #0067DB;">console</span>.log(<span class="hljs-function"><span
+                  class="hljs-keyword" style="color: #700FB2;">function</span>(<span class="hljs-params"
+                                                                                     style="color: #0067DB;"></span>) </span>{});
+}
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <strong>How many different values does this code pass to <code>console.log</code>?</strong>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <p style="margin-bottom:1em;display:block;margin:13px 0;font-size:1.8em;font-weight:bold;text-transform:uppercase;border:1px solid;text-align:center;padding:20px;text-decoration:none;color:#E80238;font-family:SourceSansPro, sans-serif">
+                                                    Spoilers Below</p>
+                                                <p style="margin-bottom:1em;display:block;margin:13px 0;padding:2px;color:#E80238;text-align:center">
+                                                    Don’t scroll further until you have decided on an answer.</p>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                ...
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                The answer is seven.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <strong>Every time we execute a line of code that contains a function
+                                                    expression, a brand new function value appears in our
+                                                    universe.</strong></div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="Functions"
+                                                             src="05.%20Counting%20the%20Values%20(Part%202)_files/function-creation-optim-v2.gif"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Here, too, <code>function() {}</code> is an expression. Like any
+                                                expression, a function expression is a “question” to our JavaScript
+                                                universe — <strong>which answers us by <em>creating</em> a new function
+                                                value every time we ask</strong>. This is very similar to how
+                                                <code>{}</code> creates a new object value when it executes. Functions
+                                                are like objects!
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Technically, functions <em>are</em>
+                                                objects in JavaScript. We’ll keep treating them as a separate
+                                                fundamental type because they have unique capabilities compared to
+                                                regular objects. But, generally speaking, if you can do something to an
+                                                object, you can also do that to a function too. They are very special
+                                                objects.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:22px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:24px;line-height:26px;text-align:left;color:#021326;">
+                                                Calling a Function
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                What does this code print?
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> countDwarves = <span
+              class="hljs-function"><span class="hljs-keyword" style="color: #700FB2;">function</span>(<span
+              class="hljs-params" style="color: #0067DB;"></span>) </span>{ <span class="hljs-keyword"
+                                                                                  style="color: #700FB2;">return</span> <span
+              class="hljs-number" style="color: #0067DB;">7</span>; };
+<span class="hljs-keyword" style="color: #700FB2;">let</span> dwarves = countDwarves;
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(dwarves);
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                You might think that it prints <code>7</code>, especially if you’re not
+                                                looking very closely.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Now check this snippet in the console! The exact thing it prints depends
+                                                on the browser, but you will see <em>the function itself</em> instead of
+                                                the number <code>7</code> there.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                If you follow our mental model, this behavior should make sense:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <ol>
+                                                    <li style="padding-bottom: 8px;">First, we created a new function
+                                                        value with a <code>function() { }</code> expression, and pointed
+                                                        the <code>countDwarves</code> variable at this value.
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">Next, we pointed the
+                                                        <code>dwarves</code> variable at the value that <code>countDwarves</code>
+                                                        is pointing to — which is the same function value.
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">Finally, we logged the value that
+                                                        <code>dwarves</code> is currently pointing to.
+                                                    </li>
+                                                </ol>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <em>At no point, did we call our function!</em></div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                As a result, both <code>countDwarves</code> and <code>dwarves</code>
+                                                point at the same value, which happens to be a function. See, <em>functions
+                                                are values</em>. We can point variables to them, just like we can do
+                                                with numbers or objects.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <strong>Of course, if we want to <em>call</em> a function, we can do
+                                                    that too:</strong></div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td vertical-align="top"
+                                            style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;word-break:break-word;">
+
+                                            <div class="mj-column-px-600 mj-outlook-group-fix"
+                                                 style="padding-bottom:10px;font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+        
+      <pre style="font-size:17px;padding-left:25px;font-family:RobotoMono, monospace"><code
+              style="font-family:RobotoMono, monospace;line-height:28px"><span class="hljs-keyword"
+                                                                               style="color: #700FB2;">let</span> countDwarves = <span
+              class="hljs-function"><span class="hljs-keyword" style="color: #700FB2;">function</span>(<span
+              class="hljs-params" style="color: #0067DB;"></span>) </span>{ <span class="hljs-keyword"
+                                                                                  style="color: #700FB2;">return</span> <span
+              class="hljs-number" style="color: #0067DB;">7</span>; };
+<span class="hljs-keyword" style="color: #700FB2;">let</span> dwarves = countDwarves(); <span class="hljs-comment"
+                                                                                              style="color: #767391;">// () is a function call</span>
+<span class="hljs-built_in" style="color: #0067DB;">console</span>.log(dwarves);
+</code></pre>
+                                                <table role="presentation"
+                                                       style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;vertical-align:top;"
+                                                       width="100%" cellspacing="0" cellpadding="0" border="0">
+
+                                                </table>
+
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Note that neither the <code>let</code> declaration nor the
+                                                <code>=</code> assignment have anything to do with our function call.
+                                                It’s <code>()</code> that performs the function call — and it alone!
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <strong>Adding <code>()</code> changes the meaning of our code:</strong>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <ul>
+                                                    <li style="padding-bottom: 8px;">
+                                                        <code>let dwarves = countDwarves</code> means “Point <code>dwarves</code>
+                                                        towards the value that <code>countDwarves</code> is pointing
+                                                        to.”
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">
+                                                        <code>let dwarves = countDwarves()</code> means “Point <code>dwarves</code>
+                                                        towards the value <strong>returned by</strong> the function that
+                                                        <code>countDwarves</code> is pointing to.”
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                In fact, <code>countDwarves()</code> is also an expression. It’s called
+                                                a <em>call expression</em>.
+                                                To “answer” a call expression, JavaScript runs the code inside our
+                                                function, and hands us the returned value as the result (in this
+                                                example, it’s <code>7</code>).
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                We’ll look at function calls in more detail in the future modules.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:30px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:37.90px;line-height:40px;text-align:left;color:#021326;">
+                                                Recap
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                That
+                                                was quite a journey! Over the last two modules, we have looked at every
+                                                value type in JavaScript. Let’s join Count von Count in recapping how
+                                                many values there are of each type, starting with the different
+                                                primitive types:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="Recap: different types of values"
+                                                             src="05.%20Counting%20the%20Values%20(Part%202)_files/primitives-pt2-2.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <ul>
+                                                    <li style="padding-bottom: 8px;">
+                                                        <strong>Undefined</strong>: Only one value,
+                                                        <code>undefined</code>.
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">
+                                                        <strong>Null</strong>: Only one value, <code>null</code>.
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">
+                                                        <strong>Booleans</strong>: Two values: <code>true</code> and
+                                                        <code>false</code>.
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">
+                                                        <strong>Numbers</strong>: One value for each <a
+                                                            href="https://en.wikipedia.org/wiki/Double-precision_floating-point_format"
+                                                            style="text-decoration: none; border-bottom: 2px solid blue; color: blue;"
+                                                            url-id="897757419">floating point math</a> number.
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">
+                                                        <strong>BigInts</strong>: One value for every conceivable
+                                                        integer.
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">
+                                                        <strong>Strings</strong>: One value for every conceivable
+                                                        string.
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">
+                                                        <strong>Symbols</strong>: We skipped Symbols for now, but we’ll
+                                                        get to them someday!
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                The types below are special because they let us <em>make our own
+                                                values</em>:
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <table role="presentation"
+                                                   style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;"
+                                                   cellspacing="0" cellpadding="0" border="0">
+                                                <tbody>
+                                                <tr>
+                                                    <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;width:550px;">
+
+                                                        <img alt="Recap: objects and functions"
+                                                             src="05.%20Counting%20the%20Values%20(Part%202)_files/summary-2.png"
+                                                             style="border:0;line-height:100%;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;max-width:100%;height:auto;border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;"
+                                                             width="550" height="auto">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <ul>
+                                                    <li style="padding-bottom: 8px;">
+                                                        <strong>Objects</strong>: One value for every object literal we
+                                                        execute.
+                                                    </li>
+                                                    <li style="padding-bottom: 8px;">
+                                                        <strong>Function</strong>: One value for every function
+                                                        expression we execute.
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                It
+                                                was fun to visit the different “celestial spheres” of JavaScript. Now
+                                                that we’ve counted all the values, we’ve also learned what makes them
+                                                <em>distinct</em> from one another. <strong>For example, writing
+                                                <code>2</code> or <code>"hello"</code> always “summons” the same number
+                                                or a string value. But writing <code>{}</code> or <code>function()
+                                                    {}</code> always <em>creates</em> a brand new, different
+                                                value.</strong> This idea is crucial to understanding equality in
+                                                JavaScript, which will be the topic of the next module.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;padding-top:30px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:ff-meta-serif-pro, Palatino, &quot;Palatino Linotype&quot;, &quot;Palatino LT STD&quot;, &quot;Book Antiqua&quot;, Georgia, system-ui-serif, serif;font-size:37.90px;line-height:40px;text-align:left;color:#021326;">
+                                                Exercises
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                This module also has exercises for you to practice!
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <a href="https://eggheadio.typeform.com/to/STEeMy"
+                                                   style="text-decoration: none; border-bottom: 2px solid blue; color: blue;"
+                                                   url-id="897757542"><strong>Click here</strong> to solidify this
+                                                    mental model with a few short exercises.</a></div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                <strong>Don’t skip them!</strong></div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Even
+                                                though you’re probably familiar with different types of values, these
+                                                exercises will help you cement the mental model we’re building. We need
+                                                this foundation before we can get to more complex topics.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Once you complete <a
+                                                    href="https://eggheadio.typeform.com/to/STEeMy"
+                                                    style="text-decoration: none; border-bottom: 2px solid blue; color: blue;"
+                                                    url-id="897757542">the exercises</a> I will send the next module.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;font-size:0px;padding:10px 25px;word-break:break-word;"
+                                            align="left">
+
+                                            <div style="padding-bottom:10px;font-family:Roboto, sans-serif;font-size:16px;line-height:28px;text-align:left;color:#2e2e32;">
+                                                Cheers,<br>
+                                                Dan
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <!--[if mso | IE]>
+                            </td>
+
+                            </tr>
+
+                            </table>
+                            <![endif]-->
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+
+            <!--[if mso | IE]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+
+
+        </div>
+
+
+    </div>
+    <p style="margin-bottom:1em;display:block;margin:13px 0">
+        <strong>
+            Next: <a href="./06.%20Equality%20of%20Values.html">06. Equality of Values</a>
+        </strong>
+    </p>
+    <small>
+        337 Garden Oaks Blvd #97429, Houston, TX 77018
+    </small>
+</div>
+</body>
+</html>
