@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://www.joelonsoftware.com/xmlrpc.php">
+
+<title>Things You Should Never Do, Part I – Joel on Software</title>
+<!-- Jetpack Site Verification Tags -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="dns-prefetch" href="https://v0.wordpress.com/">
+<link rel="dns-prefetch" href="https://i0.wp.com/">
+<link rel="dns-prefetch" href="https://i1.wp.com/">
+<link rel="dns-prefetch" href="https://i2.wp.com/">
+<link rel="dns-prefetch" href="https://c0.wp.com/">
+<link rel="alternate" type="application/rss+xml" title="Joel on Software » Feed" href="https://www.joelonsoftware.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Joel on Software » Comments Feed" href="https://www.joelonsoftware.com/comments/feed/">
+		<script type="text/javascript" async="" id="gauges-tracker" data-site-id="57a9715ec88d90063f018386" src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/track.js"></script><script id="twitter-wjs" src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/widgets.js"></script><script async="" src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/analytics.js"></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.joelonsoftware.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.5.3"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/wp-emoji-release.js" type="text/javascript" defer="defer"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-block-library-css" href="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/style.css" type="text/css" media="all">
+<style id="wp-block-library-inline-css" type="text/css">
+.has-text-align-justify{text-align:justify;}
+</style>
+<link rel="stylesheet" id="editor-style-css" href="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/style_002.css" type="text/css" media="all">
+<link rel="stylesheet" id="editor-font-awesome-css-css" href="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/font-awesome.css" type="text/css" media="screen">
+<!--[if IE]>
+<link rel='stylesheet' id='ie7-style-css'  href='https://149366100.v2.pressablecdn.com/wp-content/themes/editor-redux/inc/styles/ie.css?ver=1559091807' type='text/css' media='all' />
+<![endif]-->
+<link rel="stylesheet" id="editor-fonts-css" href="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/css.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/jquery_002.js" id="jquery-core-js"></script>
+<link rel="https://api.w.org/" href="https://www.joelonsoftware.com/wp-json/"><link rel="alternate" type="application/json" href="https://www.joelonsoftware.com/wp-json/wp/v2/posts/923"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.joelonsoftware.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.joelonsoftware.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="2000/04/06" href="https://www.joelonsoftware.com/2000/04/06/20000406/">
+<link rel="next" title="2000/04/10" href="https://www.joelonsoftware.com/2000/04/10/20000410/">
+
+<link rel="canonical" href="https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/">
+<link rel="shortlink" href="https://wp.me/p83KNI-eT">
+<link rel="alternate" type="application/json+oembed" href="https://www.joelonsoftware.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.joelonsoftware.com%2F2000%2F04%2F06%2Fthings-you-should-never-do-part-i%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.joelonsoftware.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.joelonsoftware.com%2F2000%2F04%2F06%2Fthings-you-should-never-do-part-i%2F&amp;format=xml">
+<style type="text/css">img#wpstats{display:none}</style>	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-225715-5', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<meta name="description" content="Netscape 6.0 is finally going into its first public beta. There never was a version 5.0. The last major release, version 4.0, was released almost three years ago. Three years is an awfully long time in the Internet world. During this time, Netscape sat by, helplessly, as their market share plummeted. It's a bit smarmy…">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Things You Should Never Do, Part I">
+<meta property="og:url" content="https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/">
+<meta property="og:description" content="Netscape 6.0 is finally going into its first public beta. There never was a version 5.0. The last major release, version 4.0, was released almost three years ago. Three years is an awfully long tim…">
+<meta property="article:published_time" content="2000-04-06T00:15:24+00:00">
+<meta property="article:modified_time" content="2016-12-05T19:28:06+00:00">
+<meta property="og:site_name" content="Joel on Software">
+<meta property="og:image" content="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=400%2C400&amp;ssl=1">
+<meta property="og:image:width" content="400">
+<meta property="og:image:height" content="400">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:text:title" content="Things You Should Never Do, Part I">
+<meta name="twitter:image" content="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=240%2C240&amp;ssl=1">
+<meta name="twitter:card" content="summary">
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="icon" href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=32%2C32&amp;ssl=1" sizes="32x32">
+<link rel="icon" href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=192%2C192&amp;ssl=1" sizes="192x192">
+<link rel="apple-touch-icon" href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=180%2C180&amp;ssl=1">
+<meta name="msapplication-TileImage" content="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=270%2C270&amp;ssl=1">
+			<style type="text/css" id="wp-custom-css">
+				/*
+Welcome to Custom CSS!
+
+To learn how this works, see http://wp.me/PEmnE-Bt
+*/
+/* Joel Test Div */
+.joel-test {
+	border: 1px solid rgba(0,0,0,0.2);
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+	-moz-box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+	font-size: 16px;
+	margin: 2.5em auto;
+	max-width: 400px;
+	padding: 10px;
+}
+
+.joel-test-title {
+	font-size: 25px;
+	font-weight: 700;
+	text-align: center;
+}			</style>
+		<style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style></head>
+
+<body class="post-template-default single single-post postid-923 single-format-standard">
+
+
+<div id="page" class="hfeed site container">
+
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	<!-- Get sidebar color option (Appearance -> Customize -> Theme Options) -->
+		<header id="masthead" class="site-header light" role="banner">
+		<!-- Tab navigation -->
+		<ul class="toggle-bar" role="tablist">
+			<!-- Main navigation -->
+			<li id="panel-1" class="current" role="presentation">
+				<a href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true" class="current nav-toggle" data-tab="tab-1"><i class="fa fa-bars"></i><span class="screen-reader-text">View menu</span></a>
+			</li>
+
+			<!-- Featured Posts navigation -->
+			
+			<!-- Sidebar widgets navigation -->
+			<li id="panel-3" role="presentation">
+				<a href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false" class="folder-toggle" data-tab="tab-3"><i class="fa fa-folder"></i><i class="fa fa-folder-open"></i><span class="screen-reader-text">View sidebar</span></a>
+			</li>
+		</ul>
+
+		<div id="tabs" class="toggle-tabs">
+			<div class="site-header-inside">
+				<!-- Logo, description and main navigation -->
+				<div id="tab-1" class="tab-content current fadeIn">
+					<div class="site-branding">
+						<!-- Get the site branding -->
+													<h1 class="site-title"><a href="https://www.joelonsoftware.com/" rel="home">Joel on Software</a></h1>
+							<h2 class="site-description"></h2>
+											</div>
+
+					<nav id="site-navigation" class="main-navigation" role="navigation">
+											</nav><!-- #site-navigation -->
+
+					
+					<div id="front-widgets" class="widget-area" role="complementary">
+
+	<aside id="text-3" class="widget widget_text"><h2 class="widget-title">Your host</h2>			<div class="textwidget"><a href="https://www.joelonsoftware.com/about-me/"><img src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/Pong.webp" notsrc="https://149366100.v2.pressablecdn.com/wp-content/uploads/2016/12/11969842-1.jpg" width="197" height="390"></a><p>I’m Joel Spolsky, a software developer in New York City. <a href="https://www.joelonsoftware.com/about-me/">More about me</a>.</p>
+</div>
+		</aside>
+</div><!-- #front-widgets -->
+
+				</div><!-- #tab-1 -->
+
+				<!-- Featured Posts template (template-featured-posts.php) -->
+				
+				<!-- Sidebar widgets -->
+				<div id="tab-3" class="tab-content animated fadeIn" role="tabpanel" aria-labelledby="panel-3" aria-hidden="true">
+					<div id="secondary" class="widget-area" role="complementary">
+
+	<aside id="search-3" class="widget widget_search">
+<form role="search" method="get" class="search-form" action="https://www.joelonsoftware.com/search-results/" id="cse-search-box">
+	<div>
+		<input type="hidden" name="cx" value="004631902266951669168:g9jvyociwrg">
+		<input type="hidden" name="ie" value="UTF-8">
+	</div>
+	<input type="search" class="search-field" placeholder="Search …" name="q" title="Search for:">
+	
+	<input type="submit" class="search-submit" name="sa"><span class="screen-reader-text">Search</span>
+</form>
+</aside><aside id="text-2" class="widget widget_text">			<div class="textwidget"><img src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/newdesign-books.webp" style="float: left; margin-right: 15px;" width="42" height="100">Read the archives in dead-tree format! Many of these articles have been collected into <a href="https://www.joelonsoftware.com/buy-the-books/">four books</a>, available at your favorite bookstore. It’s an excellent way to read the site in the bath, or throw it at your boss.</div>
+		</aside><aside id="text-4" class="widget widget_text"><h2 class="widget-title">Careers</h2>			<div class="textwidget"><p><img src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/jobs.webp" width="215" height="223"></p>
+<p>Ready to level up? <a href="http://stackoverflow.com/jobs">Stack Overflow Jobs</a> is the job site that puts the needs of developers first. Whether you want to take control of your search or <a href="http://stackoverflow.com/jobs/why-jobs">let employers discover you</a>, we’re on a mission to help every developer find a job they love.</p>
+<p>Looking to hire smart programmers who get things done? <a href="https://www.stackoverflowbusiness.com/talent">Stack Overflow Talent</a>
+ is a fully-customized sourcing solution that helps you understand, 
+reach, and attract developers on the platform they trust most. Find the 
+right candidates for your jobs. <a href="https://www.stackoverflowbusiness.com/talent/request-a-demo?utm_source=joelonsoftware&amp;utm_medium=referral&amp;utm_term=learn-more">Learn more.</a></p>
+</div>
+		</aside><aside id="text-6" class="widget widget_text">			<div class="textwidget"><p><a href="http://stackoverflow.com/"><img src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/so-logo.webp" width="730" height="173"></a></p>
+<p>For my day job, I'm the co-founder and CEO of <a href="http://stackoverflow.com/">Stack Overflow</a>,
+ the largest online community for programmers to learn, share their 
+knowledge, and level up. Each month, more than 40 million professional 
+and aspiring programmers visit Stack Overflow to ask and answer 
+questions and find better jobs. Stack Overflow is also the flagship site
+ of the <a href="http://stackexchange.com/">Stack Exchange network</a>, 
+160+ question and answer sites dedicated to all kinds of topics from 
+cooking to gaming. According to Quantcast, Stack Overflow is the 30th 
+largest web property in the United States and in the top 100 in the 
+world.<br>
+<a href="https://stackoverflow.com/users/story/4"><br>
+<img src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/4.webp" alt="profile for Joel Spolsky on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for Joel Spolsky on Stack Exchange, a network of free, community-driven Q&amp;A sites" width="208" height="58"><br>
+</a></p>
+</div>
+		</aside><aside id="text-7" class="widget widget_text">			<div class="textwidget"><p><a href="http://fogcreek.com/"><img src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/fc-logo.webp" width="412" height="93"></a><br>
+I also founded <a href="http://fogcreek.com/">Fog Creek Software</a>, 
+one of the most influential small tech companies in the world. As an 
+independent, privately-owned company, we’ve been making customers happy 
+since the turn of the century. We share what we've learned about how to 
+make great software, both by writing about our ideas and by creating 
+products, like <a href="http://www.fogcreek.com/fogbugz">FogBugz</a>, <a href="http://trello.com/">Trello</a> and <a href="https://gomix.com/">Gomix</a>,
+ that help others make great technology. As a result, Fog Creek's impact
+ on the world of developers rivals companies a thousand times our size.</p>
+</div>
+		</aside><aside id="twitter_timeline-4" class="widget widget_twitter_timeline"><h2 class="widget-title">Twitter! Twitter!</h2><a class="twitter-timeline" data-height="400" data-theme="light" data-border-color="#e8e8e8" data-tweet-limit="1" data-lang="EN" data-partner="jetpack" data-chrome="noheader nofooter noborders" href="https://twitter.com/spolsky">My Tweets</a></aside>
+</div><!-- #secondary -->
+				</div><!-- #tab-3 -->
+			</div><!-- .site-header-inside -->
+		</div><!-- #tabs -->
+	</header><!-- #masthead -->
+	<div id="content" class="site-content fadeInFast">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			
+<article id="post-923" class="post post-923 type-post status-publish format-standard hentry category-top-10 category-ceo category-news">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/" rel="bookmark"><time class="entry-date published" datetime="2000-04-06T00:15:24+00:00">April 6, 2000</time><time class="updated" datetime="2016-12-05T19:28:06+00:00">December 5, 2016</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://www.joelonsoftware.com/author/joelonsoftware/">Joel Spolsky</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title">Things You Should Never Do, Part I</h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://www.joelonsoftware.com/category/reading-lists/top-10/" rel="category tag">Top 10</a>, <a href="https://www.joelonsoftware.com/category/reading-lists/ceo/" rel="category tag">CEO</a>, <a href="https://www.joelonsoftware.com/category/news/" rel="category tag">News</a></li>
+									</ul>
+</div>
+
+	<div class="entry-content">
+		<p>Netscape 6.0 is finally going into its first public beta. There 
+never was a version 5.0. The last major release, version 4.0, was 
+released almost three years ago. Three years is an <i>awfully</i> long time in the Internet world. During this time, Netscape sat by, helplessly, as their market share plummeted.</p>
+<p>It’s a bit smarmy of me to criticize them for waiting so long between releases. They didn’t do it <i>on purpose</i>, now, did they?</p>
+<p>Well, yes. They did. They did it by making the <b>single worst strategic mistake</b> that any software company can make:</p>
+<p><img src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/Upper_West_Side_Brownstones_2.webp" width="280" hspace="4" height="192" align="right">They decided to rewrite the code from scratch.</p>
+<p>Netscape wasn’t the first company to make this mistake. Borland made 
+the same mistake when they bought Arago and tried to make it into dBase 
+for Windows, a doomed project that took so long that Microsoft Access 
+ate their lunch, then they made it again in rewriting Quattro Pro from 
+scratch and astonishing people with how few features it had. Microsoft 
+almost made the same mistake, trying to rewrite Word for Windows from 
+scratch in a doomed project called Pyramid which was shut down, thrown 
+away, and swept under the rug. Lucky for Microsoft, they had never 
+stopped working on the old code base, so they had something to ship, 
+making it merely a financial disaster, not a strategic one.</p>
+<p>We’re programmers. Programmers are, in their hearts, architects, and 
+the first thing they want to do when they get to a site is to bulldoze 
+the place flat and build something grand. We’re not excited by 
+incremental renovation: tinkering, improving, planting flower beds.</p>
+<p>There’s a subtle reason that programmers always want to throw away 
+the code and start over. The reason is that they think the old code is a
+ mess. And here is the interesting observation: <i>they are probably wrong.</i> The reason that they think the old code is a mess is because of a cardinal, fundamental law of programming:</p>
+<p style="TEXT-ALIGN: center; FONT-SIZE: 120%; FONT-WEIGHT: bold">It’s harder to read code than to write it.</p>
+<p>This is why code reuse is so hard. This is why everybody on your team
+ has a different function they like to use for splitting strings into 
+arrays of strings. They write their own function because it’s easier and
+ more fun than figuring out how the old function works.</p>
+<p><img src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/Columbus_Ave_Barber_Shop.webp" width="199" hspace="4" height="363" align="left">As
+ a corollary of this axiom, you can ask almost any programmer today 
+about the code they are working on. “It’s a big hairy mess,” they will 
+tell you. “I’d like nothing better than to throw it out and start over.”</p>
+<p>Why is it a mess?</p>
+<p>“Well,” they say, “look at this function. It is two pages long! None 
+of this stuff belongs in there! I don’t know what half of these API 
+calls are for.” </p>
+<p>Before Borland’s new spreadsheet for Windows shipped, Philippe Kahn, 
+the colorful founder of Borland, was quoted a lot in the press bragging 
+about how Quattro Pro would be much better than Microsoft Excel, because
+ it was written from scratch. All new source code! As if source code <i>rusted</i>.</p>
+<p></p><p>The idea that new code is better than old is patently absurd. Old code has been <i>used</i>. It has been <i>tested</i>. <i>Lots</i> of bugs have been found, and they’ve been <i>fixed</i>.
+ There’s nothing wrong with it. It doesn’t acquire bugs just by sitting 
+around on your hard drive. Au contraire, baby! Is software supposed to 
+be like an old Dodge Dart, that rusts just sitting in the garage? Is 
+software like a teddy bear that’s kind of gross if it’s not made out of <i>all new material</i>?</p>
+<p></p><p>Back to that two page function. Yes, I know, it’s just a 
+simple function to display a window, but it has grown little hairs and 
+stuff on it and nobody knows why. Well, I’ll tell you why: those are bug
+ fixes. One of them fixes that bug that Nancy had when she tried to 
+install the thing on a computer that didn’t have Internet Explorer. 
+Another one fixes that bug that occurs in low memory conditions. Another
+ one fixes that bug that occurred when the file is on a floppy disk and 
+the user yanks out the disk in the middle. That LoadLibrary call is ugly
+ but it makes the code work on old versions of Windows 95.</p>
+<p>Each of these bugs took weeks of real-world usage before they were 
+found. The programmer might have spent a couple of days reproducing the 
+bug in the lab and fixing it. If it’s like a lot of bugs, the fix might 
+be one line of code, or it might even be a couple of characters, but a 
+lot of work and time went into those two characters.</p>
+<p>When you throw away code and start from scratch, you are throwing 
+away all that knowledge. All those collected bug fixes. Years of 
+programming work.</p>
+<p>You are throwing away your market leadership. You are giving a gift 
+of two or three years to your competitors, and believe me, that is a <i>long</i> time in software years.</p>
+<p>You are putting yourself in an extremely dangerous position where you
+ will be shipping an old version of the code for several years, 
+completely unable to make any strategic changes or react to new features
+ that the market demands, because you don’t have shippable code. You 
+might as well just close for business for the duration.</p>
+<p>You are wasting an outlandish amount of money writing code that already exists.</p>
+<p><img src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/Columbus_Ave.webp" width="459" height="312" align="middle"></p>
+<p>Is there an alternative? The consensus seems to be that the old Netscape code base was <i>really </i>bad.
+ Well, it might have been bad, but, you know what? It worked pretty darn
+ well on an awful lot of real world computer systems.</p>
+<p>When programmers say that their code is a holy mess (as they always do), there are three kinds of things that are wrong with it.</p>
+<p>First, there are architectural problems. The code is not factored 
+correctly. The networking code is popping up its own dialog boxes from 
+the middle of nowhere; this should have been handled in the UI code. 
+These problems can be solved, one at a time, by carefully moving code, 
+refactoring, changing interfaces. They can be done by one programmer 
+working carefully and checking in his changes all at once, so that 
+nobody else is disrupted. Even fairly major architectural changes can be
+ done without <i>throwing away the code</i>. On the Juno project we 
+spent several months rearchitecting at one point: just moving things 
+around, cleaning them up, creating base classes that made sense, and 
+creating sharp interfaces between the modules. But we did it carefully, 
+with our existing code base, and we didn’t introduce new bugs or throw 
+away working code.</p>
+<p>A second reason programmers think that their code is a mess is that 
+it is inefficient. The rendering code in Netscape was rumored to be 
+slow. But this only affects a small part of the project, which you can 
+optimize or even rewrite. You don’t have to rewrite the whole thing. 
+When optimizing for speed, 1% of the work gets you 99% of the bang.</p>
+<p>Third, the code may be doggone ugly. One project I worked on actually
+ had a data type called a FuckedString. Another project had started out 
+using the convention of starting member variables with an underscore, 
+but later switched to the more standard “m_”. So half the functions 
+started with “_” and half with “m_”, which looked ugly. Frankly, this is
+ the kind of thing you solve in five minutes with a macro in Emacs, not 
+by starting from scratch.</p>
+<p>It’s important to remember that when you start from scratch there is <b>absolutely no reason</b>
+ to believe that you are going to do a better job than you did the first
+ time. First of all, you probably don’t even have the same programming 
+team that worked on version one, so you don’t actually have “more 
+experience”. You’re just going to make most of the old mistakes again, 
+and introduce some new problems that weren’t in the original version. </p>
+<p><img src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/Lincoln_Center_Trees.webp" width="280" hspace="4" height="192" align="left">The old mantra <i>build one to throw away</i>
+ is dangerous when applied to large scale commercial applications. If 
+you are writing code experimentally, you may want to rip up the function
+ you wrote last week when you think of a better algorithm. That’s fine. 
+You may want to refactor a class to make it easier to use. That’s fine, 
+too. But throwing away the whole program is a dangerous folly, and if 
+Netscape actually had some adult supervision with software industry 
+experience, they might not have shot themselves in the foot so badly.</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+
+
+	<div id="post-footer-widgets" class="widget-area" role="complementary">
+
+	<aside id="text-8" class="widget widget_text"><h2 class="widget-title">Subscribe!</h2>			<div class="textwidget"><p>You’re reading <a href="https://www.joelonsoftware.com/">Joel on Software</a>,
+ stuffed with years and years of completely raving mad articles about 
+software development, managing software teams, designing user 
+interfaces, running successful software companies, and rubber duckies.</p>
+<p>If you want to know when I publish something new, I recommend getting an RSS reader like <a href="https://newsblur.com/">NewsBlur</a> and subscribing to my <a href="https://www.joelonsoftware.com/feed/">RSS feed</a>.</p>
+</div>
+		</aside>
+</div><!-- #post-footer-widgets -->
+
+<div class="author-info">
+	<div class="author-avatar">
+		<img alt="" src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/d95216e70bed7430716b91ddd6df55fe.jpg" srcset="https://secure.gravatar.com/avatar/d95216e70bed7430716b91ddd6df55fe?s=128&amp;d=mm&amp;r=pg 2x" class="avatar avatar-64 photo" loading="lazy" width="64" height="64">	</div><!-- .author-avatar -->
+
+	<div class="author-description">
+		<h2 class="author-title"><span class="author-heading">About the author.</span></h2>
+
+		<p class="author-bio">
+			In 2000 I co-founded Fog Creek Software, where we created lots of 
+cool things like the FogBugz bug tracker, Trello, and Glitch. I also 
+worked with Jeff Atwood to create Stack Overflow and served as CEO of 
+Stack Overflow from 2010-2019.
+
+Today I serve as the chairman of the board for <a href="https://stackoverflow.com/">Stack Overflow</a>, <a href="https://glitch.com/">Glitch</a>, and <a href="https://hash.ai/">HASH</a>.		</p><!-- .author-bio -->
+	</div><!-- .author-description -->
+</div><!-- .author-info -->
+
+				<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text">Post navigation</h1>
+		<div class="nav-links">
+			<div class="nav-previous"><a href="https://www.joelonsoftware.com/2000/04/06/20000406/" rel="prev"><span class="meta-nav">← Previous Post</span> 2000/04/06</a></div><div class="nav-next"><a href="https://www.joelonsoftware.com/2000/04/10/20000410/" rel="next"><span class="meta-nav">Next Post →</span> 2000/04/10</a></div>		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+		
+			
+		
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+			<a class="powered-by" href="https://wordpress.org/">
+				Proudly powered by WordPress			</a>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+	<div style="display:none">
+	<div class="grofile-hash-map-d95216e70bed7430716b91ddd6df55fe">
+	</div>
+	</div>
+<script type="text/javascript" src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/photon.js" id="jetpack-photon-js"></script>
+<script type="text/javascript" src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/jquery.js" id="fitvids-js"></script>
+<script type="text/javascript" src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/editor.js" id="editor-js-js"></script>
+<script type="text/javascript" src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/twitter-timeline.js" id="jetpack-twitter-timeline-js"></script>
+<script type="text/javascript" src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/wp-embed.js" id="wp-embed-js"></script>
+		<script type="text/javascript">
+			(function() {
+			var t   = document.createElement( 'script' );
+			t.type  = 'text/javascript';
+			t.async = true;
+			t.id    = 'gauges-tracker';
+			t.setAttribute( 'data-site-id', '57a9715ec88d90063f018386' );
+			t.src = '//secure.gaug.es/track.js';
+			var s = document.getElementsByTagName( 'script' )[0];
+			s.parentNode.insertBefore( t, s );
+			})();
+		</script>
+		<script type="text/javascript" src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/e-202045.js" async="async" defer="defer"></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:9.0.2',blog:'119105578',post:'923',tz:'0',srv:'www.joelonsoftware.com'} ]);
+	_stq.push([ 'clickTrackerInit', '119105578', '923' ]);
+</script>
+
+
+
+
+<img src="Things%20You%20Should%20Never%20Do%20-%20rewrite%20from%20scratch_files/g.gif" alt=":)" id="wpstats" width="6" height="5"></body></html>
+<!--
+	generated 178 seconds ago
+	generated in 0.550 seconds
+	served from batcache in 0.002 seconds
+	expires in 122 seconds
+-->

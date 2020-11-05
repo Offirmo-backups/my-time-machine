@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://www.joelonsoftware.com/xmlrpc.php">
+
+<title>The Law of Leaky Abstractions – Joel on Software</title>
+<!-- Jetpack Site Verification Tags -->
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="dns-prefetch" href="https://v0.wordpress.com/">
+<link rel="dns-prefetch" href="https://i0.wp.com/">
+<link rel="dns-prefetch" href="https://i1.wp.com/">
+<link rel="dns-prefetch" href="https://i2.wp.com/">
+<link rel="dns-prefetch" href="https://c0.wp.com/">
+<link rel="alternate" type="application/rss+xml" title="Joel on Software » Feed" href="https://www.joelonsoftware.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Joel on Software » Comments Feed" href="https://www.joelonsoftware.com/comments/feed/">
+		<script type="text/javascript" async="" id="gauges-tracker" data-site-id="57a9715ec88d90063f018386" src="The%20Law%20of%20Leaky%20Abstractions_files/track.js"></script><script id="twitter-wjs" src="The%20Law%20of%20Leaky%20Abstractions_files/widgets.js"></script><script async="" src="The%20Law%20of%20Leaky%20Abstractions_files/analytics.js"></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.joelonsoftware.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.5.3"}};
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,8205,55356,57212],[55357,56424,8203,55356,57212])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="The%20Law%20of%20Leaky%20Abstractions_files/wp-emoji-release.js" type="text/javascript" defer="defer"></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="wp-block-library-css" href="The%20Law%20of%20Leaky%20Abstractions_files/style.css" type="text/css" media="all">
+<style id="wp-block-library-inline-css" type="text/css">
+.has-text-align-justify{text-align:justify;}
+</style>
+<link rel="stylesheet" id="editor-style-css" href="The%20Law%20of%20Leaky%20Abstractions_files/style_002.css" type="text/css" media="all">
+<link rel="stylesheet" id="editor-font-awesome-css-css" href="The%20Law%20of%20Leaky%20Abstractions_files/font-awesome.css" type="text/css" media="screen">
+<!--[if IE]>
+<link rel='stylesheet' id='ie7-style-css'  href='https://149366100.v2.pressablecdn.com/wp-content/themes/editor-redux/inc/styles/ie.css?ver=1559091807' type='text/css' media='all' />
+<![endif]-->
+<link rel="stylesheet" id="editor-fonts-css" href="The%20Law%20of%20Leaky%20Abstractions_files/css.css" type="text/css" media="all">
+<link rel="stylesheet" id="jetpack_css-css" href="The%20Law%20of%20Leaky%20Abstractions_files/jetpack.css" type="text/css" media="all">
+<script type="text/javascript" src="The%20Law%20of%20Leaky%20Abstractions_files/jquery.js" id="jquery-core-js"></script>
+<link rel="https://api.w.org/" href="https://www.joelonsoftware.com/wp-json/"><link rel="alternate" type="application/json" href="https://www.joelonsoftware.com/wp-json/wp/v2/posts/902"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.joelonsoftware.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.joelonsoftware.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="2002/11/11" href="https://www.joelonsoftware.com/2002/11/11/20021111/">
+<link rel="next" title="2002/11/13" href="https://www.joelonsoftware.com/2002/11/13/20021113/">
+
+<link rel="canonical" href="https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/">
+<link rel="shortlink" href="https://wp.me/p83KNI-ey">
+<link rel="alternate" type="application/json+oembed" href="https://www.joelonsoftware.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.joelonsoftware.com%2F2002%2F11%2F11%2Fthe-law-of-leaky-abstractions%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.joelonsoftware.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.joelonsoftware.com%2F2002%2F11%2F11%2Fthe-law-of-leaky-abstractions%2F&amp;format=xml">
+<style type="text/css">img#wpstats{display:none}</style>	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+		ga('create', 'UA-225715-5', 'auto');
+		ga('send', 'pageview');
+	</script>
+	<meta name="description" content="There's a key piece of magic in the engineering of the Internet which you rely on every single day. It happens in the TCP protocol, one of the fundamental building blocks of the Internet. TCP is a way to transmit data that is reliable. By this I mean: if you send a message over a…">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Law of Leaky Abstractions">
+<meta property="og:url" content="https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/">
+<meta property="og:description" content="There’s a key piece of magic in the engineering of the Internet which you rely on every single day. It happens in the TCP protocol, one of the fundamental building blocks of the Internet. TCP…">
+<meta property="article:published_time" content="2002-11-11T00:15:03+00:00">
+<meta property="article:modified_time" content="2018-10-05T13:57:35+00:00">
+<meta property="og:site_name" content="Joel on Software">
+<meta property="og:image" content="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=400%2C400&amp;ssl=1">
+<meta property="og:image:width" content="400">
+<meta property="og:image:height" content="400">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:text:title" content="The Law of Leaky Abstractions">
+<meta name="twitter:image" content="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=240%2C240&amp;ssl=1">
+<meta name="twitter:card" content="summary">
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="icon" href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=32%2C32&amp;ssl=1" sizes="32x32">
+<link rel="icon" href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=192%2C192&amp;ssl=1" sizes="192x192">
+<link rel="apple-touch-icon" href="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=180%2C180&amp;ssl=1">
+<meta name="msapplication-TileImage" content="https://i0.wp.com/www.joelonsoftware.com/wp-content/uploads/2016/12/11969842.jpg?fit=270%2C270&amp;ssl=1">
+			<style type="text/css" id="wp-custom-css">
+				/*
+Welcome to Custom CSS!
+
+To learn how this works, see http://wp.me/PEmnE-Bt
+*/
+/* Joel Test Div */
+.joel-test {
+	border: 1px solid rgba(0,0,0,0.2);
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+	-moz-box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+	-webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.2);
+	font-size: 16px;
+	margin: 2.5em auto;
+	max-width: 400px;
+	padding: 10px;
+}
+
+.joel-test-title {
+	font-size: 25px;
+	font-weight: 700;
+	text-align: center;
+}			</style>
+		<style id="fit-vids-style">.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}</style></head>
+
+<body class="post-template-default single single-post postid-902 single-format-standard">
+
+
+<div id="page" class="hfeed site container">
+
+	<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+
+	<!-- Get sidebar color option (Appearance -> Customize -> Theme Options) -->
+		<header id="masthead" class="site-header light" role="banner">
+		<!-- Tab navigation -->
+		<ul class="toggle-bar" role="tablist">
+			<!-- Main navigation -->
+			<li id="panel-1" class="current" role="presentation">
+				<a href="#tab-1" role="tab" aria-controls="tab-1" aria-selected="true" class="current nav-toggle" data-tab="tab-1"><i class="fa fa-bars"></i><span class="screen-reader-text">View menu</span></a>
+			</li>
+
+			<!-- Featured Posts navigation -->
+			
+			<!-- Sidebar widgets navigation -->
+			<li id="panel-3" role="presentation">
+				<a href="#tab-3" role="tab" aria-controls="tab-3" aria-selected="false" class="folder-toggle" data-tab="tab-3"><i class="fa fa-folder"></i><i class="fa fa-folder-open"></i><span class="screen-reader-text">View sidebar</span></a>
+			</li>
+		</ul>
+
+		<div id="tabs" class="toggle-tabs">
+			<div class="site-header-inside">
+				<!-- Logo, description and main navigation -->
+				<div id="tab-1" class="tab-content current fadeIn">
+					<div class="site-branding">
+						<!-- Get the site branding -->
+													<h1 class="site-title"><a href="https://www.joelonsoftware.com/" rel="home">Joel on Software</a></h1>
+							<h2 class="site-description"></h2>
+											</div>
+
+					<nav id="site-navigation" class="main-navigation" role="navigation">
+											</nav><!-- #site-navigation -->
+
+					
+					<div id="front-widgets" class="widget-area" role="complementary">
+
+	<aside id="text-3" class="widget widget_text"><h2 class="widget-title">Your host</h2>			<div class="textwidget"><a href="https://www.joelonsoftware.com/about-me/"><img src="The%20Law%20of%20Leaky%20Abstractions_files/Pong.webp" notsrc="https://149366100.v2.pressablecdn.com/wp-content/uploads/2016/12/11969842-1.jpg" width="225" height="444"></a><p>I’m Joel Spolsky, a software developer in New York City. <a href="https://www.joelonsoftware.com/about-me/">More about me</a>.</p>
+</div>
+		</aside>
+</div><!-- #front-widgets -->
+
+				</div><!-- #tab-1 -->
+
+				<!-- Featured Posts template (template-featured-posts.php) -->
+				
+				<!-- Sidebar widgets -->
+				<div id="tab-3" class="tab-content animated fadeIn" role="tabpanel" aria-labelledby="panel-3" aria-hidden="true">
+					<div id="secondary" class="widget-area" role="complementary">
+
+	<aside id="search-3" class="widget widget_search">
+<form role="search" method="get" class="search-form" action="https://www.joelonsoftware.com/search-results/" id="cse-search-box">
+	<div>
+		<input type="hidden" name="cx" value="004631902266951669168:g9jvyociwrg">
+		<input type="hidden" name="ie" value="UTF-8">
+	</div>
+	<input type="search" class="search-field" placeholder="Search …" name="q" title="Search for:">
+	
+	<input type="submit" class="search-submit" name="sa"><span class="screen-reader-text">Search</span>
+</form>
+</aside><aside id="text-2" class="widget widget_text">			<div class="textwidget"><img src="The%20Law%20of%20Leaky%20Abstractions_files/newdesign-books.webp" style="float: left; margin-right: 15px;" data-recalc-dims="1">Read the archives in dead-tree format! Many of these articles have been collected into <a href="https://www.joelonsoftware.com/buy-the-books/">four books</a>, available at your favorite bookstore. It’s an excellent way to read the site in the bath, or throw it at your boss.</div>
+		</aside><aside id="text-4" class="widget widget_text"><h2 class="widget-title">Careers</h2>			<div class="textwidget"><p><img src="The%20Law%20of%20Leaky%20Abstractions_files/jobs.webp" data-recalc-dims="1"></p>
+<p>Ready to level up? <a href="http://stackoverflow.com/jobs">Stack Overflow Jobs</a> is the job site that puts the needs of developers first. Whether you want to take control of your search or <a href="http://stackoverflow.com/jobs/why-jobs">let employers discover you</a>, we’re on a mission to help every developer find a job they love.</p>
+<p>Looking to hire smart programmers who get things done? <a href="https://www.stackoverflowbusiness.com/talent">Stack Overflow Talent</a>
+ is a fully-customized sourcing solution that helps you understand, 
+reach, and attract developers on the platform they trust most. Find the 
+right candidates for your jobs. <a href="https://www.stackoverflowbusiness.com/talent/request-a-demo?utm_source=joelonsoftware&amp;utm_medium=referral&amp;utm_term=learn-more">Learn more.</a></p>
+</div>
+		</aside><aside id="text-6" class="widget widget_text">			<div class="textwidget"><p><a href="http://stackoverflow.com/"><img src="The%20Law%20of%20Leaky%20Abstractions_files/so-logo.webp" data-recalc-dims="1"></a></p>
+<p>For my day job, I'm the co-founder and CEO of <a href="http://stackoverflow.com/">Stack Overflow</a>,
+ the largest online community for programmers to learn, share their 
+knowledge, and level up. Each month, more than 40 million professional 
+and aspiring programmers visit Stack Overflow to ask and answer 
+questions and find better jobs. Stack Overflow is also the flagship site
+ of the <a href="http://stackexchange.com/">Stack Exchange network</a>, 
+160+ question and answer sites dedicated to all kinds of topics from 
+cooking to gaming. According to Quantcast, Stack Overflow is the 30th 
+largest web property in the United States and in the top 100 in the 
+world.<br>
+<a href="https://stackoverflow.com/users/story/4"><br>
+<img src="The%20Law%20of%20Leaky%20Abstractions_files/4.webp" alt="profile for Joel Spolsky on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for Joel Spolsky on Stack Exchange, a network of free, community-driven Q&amp;A sites" width="208" height="58"><br>
+</a></p>
+</div>
+		</aside><aside id="text-7" class="widget widget_text">			<div class="textwidget"><p><a href="http://fogcreek.com/"><img src="The%20Law%20of%20Leaky%20Abstractions_files/fc-logo.webp" data-recalc-dims="1"></a><br>
+I also founded <a href="http://fogcreek.com/">Fog Creek Software</a>, 
+one of the most influential small tech companies in the world. As an 
+independent, privately-owned company, we’ve been making customers happy 
+since the turn of the century. We share what we've learned about how to 
+make great software, both by writing about our ideas and by creating 
+products, like <a href="http://www.fogcreek.com/fogbugz">FogBugz</a>, <a href="http://trello.com/">Trello</a> and <a href="https://gomix.com/">Gomix</a>,
+ that help others make great technology. As a result, Fog Creek's impact
+ on the world of developers rivals companies a thousand times our size.</p>
+</div>
+		</aside><aside id="twitter_timeline-4" class="widget widget_twitter_timeline"><h2 class="widget-title">Twitter! Twitter!</h2><a class="twitter-timeline" data-height="400" data-theme="light" data-border-color="#e8e8e8" data-tweet-limit="1" data-lang="EN" data-partner="jetpack" data-chrome="noheader nofooter noborders" href="https://twitter.com/spolsky">My Tweets</a></aside>
+</div><!-- #secondary -->
+				</div><!-- #tab-3 -->
+			</div><!-- .site-header-inside -->
+		</div><!-- #tabs -->
+	</header><!-- #masthead -->
+	<div id="content" class="site-content fadeInFast">
+
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+
+		
+			
+<article id="post-902" class="post post-902 type-post status-publish format-standard hentry category-top-10 category-rock-star-developer category-news">
+	<!-- Grab the featured image -->
+	
+	<header class="entry-header">
+				<div class="entry-date">
+			<span class="posted-on"><a href="https://www.joelonsoftware.com/2002/11/11/the-law-of-leaky-abstractions/" rel="bookmark"><time class="entry-date published" datetime="2002-11-11T00:15:03+00:00">November 11, 2002</time><time class="updated" datetime="2018-10-05T13:57:35+00:00">October 5, 2018</time></a></span><span class="byline"> by </span> <span class="author vcard"><a class="url fn n" href="https://www.joelonsoftware.com/author/joelonsoftware/">Joel Spolsky</a></span>		</div><!-- .entry-meta -->
+		
+		<h1 class="entry-title">The Law of Leaky Abstractions</h1>	</header><!-- .entry-header -->
+
+	
+<div class="entry-meta">
+
+	<ul class="meta-list">
+					<li class="meta-cat"><a href="https://www.joelonsoftware.com/category/reading-lists/top-10/" rel="category tag">Top 10</a>, <a href="https://www.joelonsoftware.com/category/reading-lists/rock-star-developer/" rel="category tag">Rock star developer</a>, <a href="https://www.joelonsoftware.com/category/news/" rel="category tag">News</a></li>
+									</ul>
+</div>
+
+	<div class="entry-content">
+		<p>There’s a key piece of magic in the engineering of the Internet 
+which you rely on every single day. It happens in the TCP protocol, one 
+of the fundamental building blocks of the Internet.</p>
+<p>TCP is a way to transmit data that is <em>reliable</em>. By this I mean: if you send a message over a network using TCP, it will arrive, and it won’t be garbled or corrupted.</p>
+<p>We use TCP for many things like fetching web pages and sending email.
+ The reliability of TCP is why every email arrives in letter-perfect 
+condition. Even if it’s just some dumb spam.</p>
+<p>By comparison, there is another method of transmitting data called IP which is <em>unreliable</em>.
+ Nobody promises that your data will arrive, and it might get messed up 
+before it arrives. If you send a bunch of messages with IP, don’t be 
+surprised if only half of them arrive, and some of those are in a 
+different order than the order in which they were sent, and some of them
+ have been replaced by alternate messages, perhaps containing pictures 
+of adorable baby orangutans, or more likely just a lot of unreadable 
+garbage that looks like that spam you get in a foreign language.</p>
+<p>Here’s the magic part: TCP is built on top of IP. In other words, TCP is obliged to somehow send data reliably <em>using only an unreliable tool</em>.</p>
+<p>To illustrate why this is magic, consider the following morally 
+equivalent, though somewhat ludicrous,&nbsp;scenario from the real 
+world.</p>
+<p>Imagine that we had a way of sending actors from Broadway to 
+Hollywood that involved putting them in cars and driving them across the
+ country. Some of these cars crashed, killing the poor actors. Sometimes
+ the actors got drunk on the way and shaved their heads or got nasal 
+tattoos, thus becoming too ugly to work in Hollywood, and frequently the
+ actors arrived in a different order than they had set out, because they
+ all took different routes. Now imagine a new service called Hollywood 
+Express, which delivered actors to Hollywood, guaranteeing that they 
+would (a) arrive (b) in order (c) in perfect condition. The magic part 
+is that Hollywood Express doesn’t have any method of delivering the 
+actors, other than the unreliable method of putting them in cars and 
+driving them across the country. Hollywood Express works by checking 
+that each actor arrives in perfect condition, and, if he doesn’t, 
+calling up the home office and requesting that the actor’s identical 
+twin be sent instead. If the actors arrive in the wrong order Hollywood 
+Express rearranges them. If a large UFO on its way to Area 51 crashes on
+ the highway in Nevada, rendering it impassable, all the actors that 
+went that way are rerouted via Arizona and Hollywood Express doesn’t 
+even tell the movie directors in California what happened. To them, it 
+just looks like the actors are arriving a little bit more slowly than 
+usual, and they never even <em>hear</em> about the UFO crash.</p>
+<p>That is, approximately, the magic of TCP. It is what computer scientists like to call an <em>abstraction</em>:
+ a simplification of something much more complicated that is going on 
+under the covers. As it turns out, a lot of computer programming 
+consists of building abstractions. What is a string library? It’s a way 
+to pretend that computers can manipulate strings just as easily as they 
+can manipulate numbers. What is a file system? It’s a way to pretend 
+that a hard drive isn’t really a bunch of spinning magnetic platters 
+that can store bits at certain locations, but rather a hierarchical 
+system of folders-within-folders containing individual files that in 
+turn consist of one or more strings of bytes.</p>
+<p>Back to TCP. Earlier for the sake of simplicity I told a little fib, 
+and some of you have steam coming out of your ears by now because this 
+fib is driving you crazy. I said that TCP guarantees that your message 
+will arrive. It doesn’t, actually. If your pet snake has chewed through 
+the&nbsp;network cable leading to your computer, and <em>no</em> IP 
+packets can get through, then TCP can’t do anything about it and your 
+message doesn’t arrive. If you were curt with&nbsp;the system 
+administrators in your company and they punished you by plugging you 
+into an overloaded hub, only some of your IP packets will get through, 
+and TCP will work, but everything will be really slow.</p>
+<p>This is what I call a <em>leaky abstraction</em>. TCP attempts to 
+provide a complete abstraction of an underlying unreliable network, but 
+sometimes, the network leaks through the abstraction and you feel the 
+things that the abstraction can’t quite protect you from. This is but 
+one example of what I’ve dubbed the Law of Leaky Abstractions:</p>
+<table style="border: black 1px solid;" align="center">
+<tbody>
+<tr>
+<td><strong>All non-trivial abstractions, to some degree, are leaky.</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Abstractions fail. Sometimes a little, sometimes a lot. There’s 
+leakage. Things go wrong. It happens all over the place when you have 
+abstractions. Here are some examples.</p>
+<ul>
+<li>Something as simple as iterating over a large two-dimensional array 
+can have radically different performance if you do it horizontally 
+rather than vertically, depending on the “grain of the wood” — one 
+direction may result in vastly more page faults than the other 
+direction, and page faults are slow. Even assembly programmers are 
+supposed to be allowed to pretend that they have a big flat address 
+space, but virtual memory means it’s really just an abstraction, which 
+leaks when there’s a page fault and certain memory fetches take way more
+ nanoseconds than other memory fetches.</li>
+<li>The SQL language is meant to abstract away the procedural steps that
+ are needed to query a database, instead allowing you to define merely 
+what you want and let the database figure out the procedural steps to 
+query it. But in some cases, certain SQL queries are thousands of times 
+slower than other logically equivalent queries. A famous example of this
+ is that some SQL servers are dramatically faster if you specify “where 
+a=b and b=c and a=c” than if you only specify “where a=b and b=c” even 
+though the result set is the same. You’re not supposed to have to care 
+about the procedure, only the specification. But sometimes the 
+abstraction leaks and causes horrible performance and you have to break 
+out the query&nbsp;plan analyzer&nbsp;and study what it did wrong, and 
+figure out how to make your query run faster.</li>
+<li>Even though network libraries like NFS and SMB let you treat files 
+on remote machines “as if” they were local, sometimes the connection 
+becomes very slow or goes down, and the file stops acting like it was 
+local, and as a programmer you have to write code to deal with this. The
+ abstraction of “remote file is the same as local file” <a href="https://www.joelonsoftware.com/articles/fog0000000041.html">leaks</a>.
+ Here’s a concrete example for Unix sysadmins. If you put users’ home 
+directories on NFS-mounted drives (one abstraction), and your users 
+create .forward files to forward all their email somewhere else (another
+ abstraction), and the NFS server goes down while new email is arriving,
+ the messages will not be forwarded because the .forward file will not 
+be found. The leak in the abstraction actually caused a few messages to 
+be dropped on the floor.</li>
+<li>C++ string classes are supposed to let you pretend that strings are first-class data. They try to abstract away the fact that <a href="https://www.joelonsoftware.com/articles/fog0000000319.html">strings are hard</a> and let you act as if they were as easy as integers. Almost all C++ string classes overload the + operator so you can write <strong>s + “bar”</strong> to concatenate. But you know what? No matter how hard they try, there is no C++ string class on Earth that will let you type <strong>“foo” + “bar”</strong>,
+ because string literals in C++ are always char*’s, never strings. The 
+abstraction has sprung a leak that the language doesn’t let you plug. 
+(Amusingly, the history of the evolution of C++ over time can be 
+described as a history of trying to plug the leaks in the string 
+abstraction. Why they couldn’t just add a native string class to the 
+language itself eludes me at the moment.)</li>
+<li>And you can’t drive as fast when it’s raining, even though your car 
+has windshield wipers and headlights and a roof and a heater, all of 
+which protect you from caring about the fact that it’s raining (they 
+abstract away the weather), but lo, you have to worry about hydroplaning
+ (or aquaplaning in England) and sometimes the rain is so strong you 
+can’t see very far ahead so you go slower in the rain, because the 
+weather can never be completely abstracted away, because of the law of 
+leaky abstractions.</li>
+</ul>
+<p>One reason the law of leaky abstractions is problematic is that it 
+means that abstractions do not really simplify our lives as much as they
+ were meant to. When I’m training someone to be a C++ programmer, it 
+would be nice if I never had to teach them about char*’s and pointer 
+arithmetic. It would be nice if I could go straight to STL strings. But 
+one day they’ll write the code <strong>“foo” + “bar”</strong>, and truly
+ bizarre things will happen, and then I’ll have to stop and teach them 
+all about char*’s anyway. Or one day they’ll be trying to call a Windows
+ API function that is documented as having an&nbsp;OUT LPTSTR argument 
+and they won’t be able to understand how to call it until they learn 
+about char*’s, and pointers, and Unicode, and wchar_t’s, and the TCHAR 
+header files, and all that stuff that leaks up.</p>
+<p>In teaching someone about COM programming, it would be nice if I 
+could just teach them how to use the Visual Studio wizards and all the 
+code generation features, but if anything goes wrong, they will not have
+ the vaguest idea what happened or how to debug it and recover from it. 
+I’m going to have to teach them all about IUnknown and CLSIDs and 
+ProgIDS and … oh, the humanity!</p>
+<p>In teaching someone about ASP.NET programming, it would be nice if I 
+could just teach them that they can double-click on things and then 
+write code that runs on the server when the user clicks on those things.
+ Indeed ASP.NET abstracts away the difference between writing the HTML 
+code to handle clicking on a hyperlink (<strong>&lt;a&gt;</strong>) and 
+the code to handle clicking on a button. Problem: the ASP.NET designers 
+needed to hide the fact that in HTML, there’s no way to submit a form 
+from a hyperlink. They do this by generating a few lines of JavaScript 
+and attaching an onclick handler to the hyperlink. The abstraction 
+leaks, though. If the end-user has JavaScript disabled, the ASP.NET 
+application doesn’t work correctly, and if the programmer doesn’t 
+understand what ASP.NET was abstracting away, they simply won’t have any
+ clue what is wrong.</p>
+<p>The law of leaky abstractions means that whenever somebody comes up 
+with a wizzy new code-generation tool that is supposed to make us all 
+ever-so-efficient, you hear a lot of people saying “learn how to do it 
+manually first, then use the wizzy tool to save time.” Code generation 
+tools which pretend to abstract out something, like all abstractions, 
+leak, and the only way to deal with the leaks competently is to learn 
+about how the abstractions work and what they are abstracting. So the 
+abstractions save us time working, but they don’t save us time learning.</p>
+<p>And all this means that paradoxically, even as we have higher and 
+higher level programming tools with better and better abstractions, 
+becoming a proficient programmer is getting harder and harder.</p>
+<p>During my first Microsoft&nbsp;internship, I wrote string libraries 
+to run on the Macintosh. A typical assignment: write a version of <strong>strcat</strong>
+ that returns a pointer to the end of the new string. A few lines of C 
+code. Everything I did was right from K&amp;R — one thin book about the C
+ programming language.</p>
+<p>Today, to work on CityDesk, I need to know Visual Basic, COM, ATL, 
+C++, InnoSetup, Internet Explorer internals, regular expressions, DOM, 
+HTML, CSS, and XML. All high level tools compared to the old K&amp;R 
+stuff, but I still have to know the K&amp;R stuff or I’m toast.</p>
+<p>Ten years ago, we might have imagined that new programming paradigms 
+would have made programming easier by now. Indeed, the abstractions 
+we’ve created over the years <em>do</em> allow us to deal with new 
+orders of complexity in software development that we didn’t have to deal
+ with ten or fifteen years ago, like GUI programming and network 
+programming. And while these great tools, like modern OO forms-based 
+languages, let us get a lot of work done incredibly quickly, suddenly 
+one day we need to figure out a problem where the abstraction leaked, 
+and it takes 2 weeks. And when you need to hire a programmer to do 
+mostly VB programming, it’s not good enough to hire a VB programmer, 
+because they will get completely stuck in tar every time the VB 
+abstraction leaks.</p>
+<p>The Law of Leaky Abstractions is dragging us&nbsp;down.</p>
+			</div><!-- .entry-content -->
+
+</article><!-- #post-## -->
+
+
+
+	<div id="post-footer-widgets" class="widget-area" role="complementary">
+
+	<aside id="text-8" class="widget widget_text"><h2 class="widget-title">Subscribe!</h2>			<div class="textwidget"><p>You’re reading <a href="https://www.joelonsoftware.com/">Joel on Software</a>,
+ stuffed with years and years of completely raving mad articles about 
+software development, managing software teams, designing user 
+interfaces, running successful software companies, and rubber duckies.</p>
+<p>If you want to know when I publish something new, I recommend getting an RSS reader like <a href="https://newsblur.com/">NewsBlur</a> and subscribing to my <a href="https://www.joelonsoftware.com/feed/">RSS feed</a>.</p>
+</div>
+		</aside>
+</div><!-- #post-footer-widgets -->
+
+<div class="author-info">
+	<div class="author-avatar">
+		<img alt="" src="The%20Law%20of%20Leaky%20Abstractions_files/d95216e70bed7430716b91ddd6df55fe.jpg" srcset="https://secure.gravatar.com/avatar/d95216e70bed7430716b91ddd6df55fe?s=128&amp;d=mm&amp;r=pg 2x" class="avatar avatar-64 photo" loading="lazy" width="64" height="64">	</div><!-- .author-avatar -->
+
+	<div class="author-description">
+		<h2 class="author-title"><span class="author-heading">About the author.</span></h2>
+
+		<p class="author-bio">
+			In 2000 I co-founded Fog Creek Software, where we created lots of 
+cool things like the FogBugz bug tracker, Trello, and Glitch. I also 
+worked with Jeff Atwood to create Stack Overflow and served as CEO of 
+Stack Overflow from 2010-2019.
+
+Today I serve as the chairman of the board for <a href="https://stackoverflow.com/">Stack Overflow</a>, <a href="https://glitch.com/">Glitch</a>, and <a href="https://hash.ai/">HASH</a>.		</p><!-- .author-bio -->
+	</div><!-- .author-description -->
+</div><!-- .author-info -->
+
+				<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text">Post navigation</h1>
+		<div class="nav-links">
+			<div class="nav-previous"><a href="https://www.joelonsoftware.com/2002/11/11/20021111/" rel="prev"><span class="meta-nav">← Previous Post</span> 2002/11/11</a></div><div class="nav-next"><a href="https://www.joelonsoftware.com/2002/11/13/20021113/" rel="next"><span class="meta-nav">Next Post →</span> 2002/11/13</a></div>		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+		
+			
+		
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+	</div><!-- #content -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+			<a class="powered-by" href="https://wordpress.org/">
+				Proudly powered by WordPress			</a>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+	<div style="display:none">
+	<div class="grofile-hash-map-d95216e70bed7430716b91ddd6df55fe">
+	</div>
+	</div>
+<script type="text/javascript" src="The%20Law%20of%20Leaky%20Abstractions_files/photon.js" id="jetpack-photon-js"></script>
+<script type="text/javascript" src="The%20Law%20of%20Leaky%20Abstractions_files/jquery_002.js" id="fitvids-js"></script>
+<script type="text/javascript" src="The%20Law%20of%20Leaky%20Abstractions_files/editor.js" id="editor-js-js"></script>
+<script type="text/javascript" src="The%20Law%20of%20Leaky%20Abstractions_files/twitter-timeline.js" id="jetpack-twitter-timeline-js"></script>
+<script type="text/javascript" src="The%20Law%20of%20Leaky%20Abstractions_files/wp-embed.js" id="wp-embed-js"></script>
+		<script type="text/javascript">
+			(function() {
+			var t   = document.createElement( 'script' );
+			t.type  = 'text/javascript';
+			t.async = true;
+			t.id    = 'gauges-tracker';
+			t.setAttribute( 'data-site-id', '57a9715ec88d90063f018386' );
+			t.src = '//secure.gaug.es/track.js';
+			var s = document.getElementsByTagName( 'script' )[0];
+			s.parentNode.insertBefore( t, s );
+			})();
+		</script>
+		<script type="text/javascript" src="The%20Law%20of%20Leaky%20Abstractions_files/e-202045.js" async="async" defer="defer"></script>
+<script type="text/javascript">
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:9.0.2',blog:'119105578',post:'902',tz:'0',srv:'www.joelonsoftware.com'} ]);
+	_stq.push([ 'clickTrackerInit', '119105578', '902' ]);
+</script>
+
+
+
+<img src="The%20Law%20of%20Leaky%20Abstractions_files/g.gif" alt=":)" id="wpstats" width="6" height="5"></body></html>

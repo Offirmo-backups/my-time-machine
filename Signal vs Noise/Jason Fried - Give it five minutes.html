@@ -1,0 +1,2120 @@
+<!DOCTYPE html>
+<html class="js flexbox hashchange rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent wf-keplerstd-n4-active wf-keplerstd-i4-active wf-keplerstd-n7-active wf-keplerstd-n3-active wf-keplerstd-i3-active wf-actadisplay-n7-active wf-actadisplay-n4-active wf-active"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><script type="text/javascript"> var Timing = {times:{}}; Timing.mark = function(e,t)  { if(!t) {t = new Date().getTime()}; Timing.times[e] = t}; Timing.mark('firstbyte')</script>
+  
+  
+  <meta charset="utf-8">
+
+  
+  <link rel="dns-prefetch" href="https://signalvnoise.com/posts/use.typekit.net">
+  <link rel="dns-prefetch" href="https://signalvnoise.com/posts/p.typekit.net">
+  <link rel="dns-prefetch" href="https://signalvnoise.com/posts/s3.amazonaws.com">
+  <link rel="preconnect" href="https://p.typekit.net/">
+  <link rel="preconnect" href="https://beanstalk.37signals.com/">
+
+  
+  <link href="Jason%20Fried%20-%20Give%20it%20five%20minutes_files/application-4d9edb9055dd20f143cdef8111ce762c.css" media="screen" rel="stylesheet" type="text/css">
+
+  
+
+  
+  <script src="Jason%20Fried%20-%20Give%20it%20five%20minutes_files/application-827f23a8f5183234ef24158d93fa5957.js" type="text/javascript"></script>
+  <style type="text/css">.tk-kepler-std{font-family:"kepler-std",sans-serif;}.tk-acta-display{font-family:"acta-display",sans-serif;}</style><style type="text/css">@font-face{font-family:kepler-std;src:url(https://use.typekit.net/af/de0ac1/000000000000000000013146/27/l?subset_id=2&fvd=n4&v=3) format("woff2"),url(https://use.typekit.net/af/de0ac1/000000000000000000013146/27/d?subset_id=2&fvd=n4&v=3) format("woff"),url(https://use.typekit.net/af/de0ac1/000000000000000000013146/27/a?subset_id=2&fvd=n4&v=3) format("opentype");font-weight:400;font-style:normal;font-display:auto;}@font-face{font-family:kepler-std;src:url(https://use.typekit.net/af/d0cd82/000000000000000000013141/27/l?subset_id=2&fvd=i4&v=3) format("woff2"),url(https://use.typekit.net/af/d0cd82/000000000000000000013141/27/d?subset_id=2&fvd=i4&v=3) format("woff"),url(https://use.typekit.net/af/d0cd82/000000000000000000013141/27/a?subset_id=2&fvd=i4&v=3) format("opentype");font-weight:400;font-style:italic;font-display:auto;}@font-face{font-family:kepler-std;src:url(https://use.typekit.net/af/3f55d3/00000000000000000001313f/27/l?subset_id=2&fvd=n7&v=3) format("woff2"),url(https://use.typekit.net/af/3f55d3/00000000000000000001313f/27/d?subset_id=2&fvd=n7&v=3) format("woff"),url(https://use.typekit.net/af/3f55d3/00000000000000000001313f/27/a?subset_id=2&fvd=n7&v=3) format("opentype");font-weight:700;font-style:normal;font-display:auto;}@font-face{font-family:kepler-std;src:url(https://use.typekit.net/af/b795d0/000000000000000000013142/27/l?subset_id=2&fvd=n3&v=3) format("woff2"),url(https://use.typekit.net/af/b795d0/000000000000000000013142/27/d?subset_id=2&fvd=n3&v=3) format("woff"),url(https://use.typekit.net/af/b795d0/000000000000000000013142/27/a?subset_id=2&fvd=n3&v=3) format("opentype");font-weight:300;font-style:normal;font-display:auto;}@font-face{font-family:kepler-std;src:url(https://use.typekit.net/af/304385/000000000000000000013143/27/l?subset_id=2&fvd=i3&v=3) format("woff2"),url(https://use.typekit.net/af/304385/000000000000000000013143/27/d?subset_id=2&fvd=i3&v=3) format("woff"),url(https://use.typekit.net/af/304385/000000000000000000013143/27/a?subset_id=2&fvd=i3&v=3) format("opentype");font-weight:300;font-style:italic;font-display:auto;}@font-face{font-family:acta-display;src:url(https://use.typekit.net/af/38cab6/000000000000000000014175/27/l?subset_id=2&fvd=n7&v=3) format("woff2"),url(https://use.typekit.net/af/38cab6/000000000000000000014175/27/d?subset_id=2&fvd=n7&v=3) format("woff"),url(https://use.typekit.net/af/38cab6/000000000000000000014175/27/a?subset_id=2&fvd=n7&v=3) format("opentype");font-weight:700;font-style:normal;font-display:auto;}@font-face{font-family:acta-display;src:url(https://use.typekit.net/af/ecc9d2/000000000000000000014171/27/l?subset_id=2&fvd=n4&v=3) format("woff2"),url(https://use.typekit.net/af/ecc9d2/000000000000000000014171/27/d?subset_id=2&fvd=n4&v=3) format("woff"),url(https://use.typekit.net/af/ecc9d2/000000000000000000014171/27/a?subset_id=2&fvd=n4&v=3) format("opentype");font-weight:400;font-style:normal;font-display:auto;}</style><script type="text/javascript" src="Jason%20Fried%20-%20Give%20it%20five%20minutes_files/kxs4ufr.js" onload="try{Typekit.load({async:false});}catch(e){}"></script>
+  <!--[if !IE]-->
+  <script async="" type="text/javascript" src="Jason%20Fried%20-%20Give%20it%20five%20minutes_files/highlight.js" onload="hljs.initHighlightingOnLoad();"></script>
+  <!--[endif]-->
+
+  
+  
+
+  
+  <meta name="viewport" id="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0">
+  <meta property="og:site_name" content="Signal v. Noise by Basecamp">
+  <meta property="twitter:site" content="@basecamp">
+  
+    <title>Give it five minutes – Signal v. Noise</title>
+    <meta property="twitter:card" content="summary">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://signalvnoise.com/posts/3124-give-it-five-minutes">
+    <meta property="og:title" content="Give it five minutes">
+    <meta property="og:description" content="A few years ago I used to be a hothead. Whenever anyone said anything, I’d think of a way to disagree. I’d push back hard if something didn’t fit my world-view.
+
+
+	It’s like I had to be first with an opinion – as if being first meant something. But what it really meant…">
+    <meta property="og:image" content="https://s3.amazonaws.com/37assets/svn/995-avatar.154.gif">
+    
+      <meta property="twitter:creator" content="@jasonfried">
+    
+  
+  <meta property="fb:admins" content="555561089">
+  <link rel="publisher" href="https://plus.google.com/+basecamp">
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="https://signalvnoise.com/posts.rss">
+</head>
+
+  <body class="perma">
+
+    <header class="masthead">
+  <p>
+    <span class="visible-desktop">You’re reading</span>
+    <a href="https://signalvnoise.com/">Signal v. Noise</a><span class="visible-tablet">, a publication <a href="https://signalvnoise.com/writers/">about</a> the web</span>
+    by <a href="https://basecamp.com/?source=SvN">Basecamp</a>
+    <span class="visible-tablet"> since 1999.</span>
+    <span class="happyday visible-desktop" style="visibility: visible; opacity: 1;">Happy <span class="happyday--dayofweek">Friday</span>!</span>
+  </p>
+
+  
+</header>
+
+
+    <div class="container">
+      <div class="content">
+        
+
+<article class="post instapaper_body" id="article_3124">
+  
+    <header class="post-header" id="article_3124">
+  <h1 class="waveform Noise">
+    
+    Give it five minutes
+  </h1>
+
+  <div class="post-header-info">
+    
+      <figure class="post-header-info-avatar">
+        <a href="https://signalvnoise.com/writers/jf"><img alt="Jason Fried" src="Jason%20Fried%20-%20Give%20it%20five%20minutes_files/995-avatar.gif" width="30" height="30"></a>
+      </figure>
+
+      <a href="https://signalvnoise.com/writers/jf" id="Jason Fried">Jason Fried</a> <em>wrote this on</em> <span class="post-date">Mar 01 2012</span>
+    
+
+    <span class="post-header-info-discuss"><a href="https://signalvnoise.com/posts/3124-give-it-five-minutes?120#comments">120 comments</a></span>
+
+    
+  </div>
+</header>
+
+<div class="post-content">
+  <p>A few years ago I used to be a hothead. Whenever anyone said 
+anything, I’d think of a way to disagree. I’d push back hard if 
+something didn’t fit my world-view.</p>
+
+
+	<p>It’s like I had to be first with an opinion – as if being first 
+meant something. But what it really meant was that I wasn’t thinking 
+hard enough about the problem. The faster you react, the less you think.
+ Not always, but often.</p>
+
+
+	<p>It’s easy to talk about knee jerk reactions as if they are things 
+that only other people have. You have them too. If your neighbor isn’t 
+immune, neither are you.</p>
+
+
+	<p>This came to a head back in 2007. I was speaking at the Business 
+Innovation Factory conference in Providence, RI. So was Richard Saul 
+Wurman. After my talk Richard came up to introduce himself and 
+compliment my talk. That was very generous of him. He certainly didn’t 
+have to do that.</p>
+
+
+	<p>And what did I do? I pushed back at him about the talk he gave. 
+While he was making his points on stage, I was taking an inventory of 
+the things I didn’t agree with. And when presented with an opportunity 
+to speak with him, I quickly pushed back at some of his ideas. I must 
+have seemed like such an asshole.</p>
+
+
+	<p>His response changed my life. It was a simple thing. He said “Man, 
+give it five minutes.” I asked him what he meant by that? He said, it’s 
+fine to disagree, it’s fine to push back, it’s great to have strong 
+opinions and beliefs, but give my ideas some time to set in before 
+you’re sure you want to argue against them. “Five minutes” represented 
+“think”, not react. He was totally right. I came into the discussion 
+looking to prove something, not learn something.</p>
+
+
+	<p>This was a big moment for me.</p>
+
+
+	<p>Richard has spent his career thinking about these problems. He’s 
+given it 30 years. And I gave it just a few minutes. Now, certainly he 
+can be wrong and I could be right, but it’s better to think deeply about
+ something first before being so certain you’re right.</p>
+
+
+	<p>There’s also a difference between asking questions and pushing back.
+ Pushing back means you already think you know. Asking questions means 
+you want to know. Ask more questions.</p>
+
+
+	<p>Learning to think first rather than react quick is a life long 
+pursuit. It’s tough. I still get hot sometimes when I shouldn’t. But I’m
+ really enjoying all the benefits of getting better.</p>
+
+
+	<p>If you aren’t sure why this is important, think about this quote from Jonathan Ive regarding Steve Jobs’ reverence for ideas:</p>
+
+
+<blockquote>
+And just as Steve loved ideas, and loved making stuff, he treated the 
+process of creativity with a rare and a wonderful reverence. You see, I 
+think he better than anyone understood that while ideas ultimately can 
+be so powerful, they begin as fragile, barely formed thoughts, so easily
+ missed, so easily compromised, so easily just squished.
+</blockquote>
+
+	<p>That’s deep. Ideas are fragile. They often start powerless. They’re barely there, so easy to ignore or skip or miss.</p>
+
+
+	<p>There are two things in this world that take no skill: 1. Spending other people’s money and 2. Dismissing an idea.</p>
+
+
+	<p>Dismissing an idea is so easy because it doesn’t involve any work. 
+You can scoff at it. You can ignore it. You can puff some smoke at it. 
+That’s easy. The hard thing to do is protect it, think about it, let it 
+marinate, explore it, riff on it, and try it. The right idea could start
+ out life as the wrong idea.</p>
+
+
+	<p>So next time you hear something, or someone, talk about an idea, 
+pitch an idea, or suggest an idea, give it five minutes. Think about it a
+ little bit before pushing back, before saying it’s too hard or it’s too
+ much work. Those things may be true, but there may be another truth in 
+there too: It may be worth it.</p>
+
+      <div class="post-content-extended" id="extended">
+        
+      </div>
+    </div> 
+  
+</article>
+
+<section class="post-comments">
+  <div class="post-comments-info">
+    
+
+
+    
+      <a href="https://signalvnoise.com/writers/jf">Jason Fried</a> wrote <em>this on</em> Mar 01 2012
+      <em>There are</em> <span class="post-comments-info-expandable">120 comments</span>.
+    
+  </div>
+
+  <div class="post-comments-all" data-comments="" id="comments">
+  <div class="post-comment" id="comment_73094">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://culturezoo.com/" only_path="true" rel="nofollow">Levi</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Great advice, Jason. There’s a lot of wisdom in what you say.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73095">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Scott Nixon</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>This is something I’m still learning how to do. I believe it 
+takes commitment to the idea that we are wrong often and trying to be 
+humble.  My friends and family at times have said I’m a know-it-all. 
+There may be moments where that was absolutely true but I honestly feel 
+the more experience(failures) I have the less that I believe I’m 
+“right.” Having an opinion doesn’t mean you are a know it all but 
+believe you are always right <strong>is</strong>.</p>
+
+
+	<p>Thanks for sharing Jason.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73096">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://jeff.io/" only_path="true" rel="nofollow">Jeff K. Ward</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>When those 5 minutes are up and you still want to push back, 
+consider that this idea may be 100% correct for them but not for you. 
+And that’s okay.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73097">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://britinva.com/" only_path="true" rel="nofollow">Chris H</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Great article, especially since you related it to a personal 
+experience. I’d say it also applies to the opposite too, when you’re 
+sold on an idea too quickly and find yourself caught in the pitch or the
+ hype, sometimes you just have to take a step back and think it through.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73098">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">José Bové</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Captain obvious. But true. I’ll tell you in 5 minutes.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73099">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">GeeIWonder</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>You’ve got seedlings you need to nurture, and trees you need to let grow and branch and prune.</p>
+
+
+<blockquote>
+His response changed my life [...] not learn something.</blockquote>
+
+	<p>Not to completely prove your point, but I disagree. I think the 
+conversation - the ‘push back’ is fine in a forum like this. You have 
+two speakers on firm ground who are both coming from positions of 
+strength on equalish footing. A bit of push back and forth, so long as 
+it’s intellectually honest and elaborative, is fine - good even.</p>
+
+
+
+
+	<p>True, but these gems are not (should not be) the ones shared at a 
+discussion like the above. Certainly bullying your staff or throwing 
+ideas out before they get a chance to take root.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73100">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">GeeIWonder</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Missed closing blockquote above refers to the J. Ives quote. Apologies.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73101">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://pauldac.us/" only_path="true" rel="nofollow">Paul D</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>And I bet this sort of thing actually produced tangible benefits 
+for 37Sig.  Withholding judgment on BOTH the positives and negatives can
+ let you freewheel about possibilities without punishing or rewarding 
+egos in the room.  This Rush-To-Judgment is just a cancer in most 
+companies.</p>
+
+
+	<p>Like Jobs said, ideas in their infancy are almost totally unable to 
+“protect themselves” and usually die a swift and soundless death in a 
+corporate rush to judgment about its lack of merit.</p>
+
+
+	<p>Most companies are Ego Driven… not Idea Driven.  Which is why if you
+ (corp Execs) REALLY push for the generation of ideas without egos or 
+rush-to-judgment, you already have an incredible competitive advantage.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73102">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://about.me/sbram" only_path="true" rel="nofollow">Scott</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>1. I truly appreciated the reminder.</p>
+
+
+	<p>2. I need to start a business spending other people’s money on dismissing ideas.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73103">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.onstcreative.com/" only_path="true" rel="nofollow">Shaun</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Very well said Jason. I do this all the time without even thinking about it, so thank you!</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73104">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://scottmagdalein.com/" only_path="true" rel="nofollow">Scott</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>J, you must be getting old man. This sounds like it came from someone with grey in his sideburns.</p>
+
+
+	<p>Thanks for the wisdom, bro.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73105">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.sean-johnson.com/" only_path="true" rel="nofollow">Sean Johnson</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Probably my favorite post you’ve ever written, and something I desperately need to learn myself. Thanks for sharing.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73106">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.colinmonaghan.com/" only_path="true" rel="nofollow">Colin</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Great stuff.  Reminds me a bit of Steven B. Sample’s idea of “thinking gray”.</p>
+
+
+	<p>He says conventional wisdom considers snap judgements to be an asset.</p>
+
+
+	<p>But “contrarian wisdom argues that…judgments as to the truth or 
+falsity of information or the merits of new ideas should be arrived at 
+as slowly and subtly as possible – and in many cases not at all.”</p>
+
+
+	<p>The essence is “why form an opinion until you’ve heard all the 
+relevant facts and arguments, or until circumstances force you to form 
+an opinion without recourse to all the facts”?</p>
+  </div>
+</div>
+<div class="post-comment basecamper" id="comment_73107">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">JF</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p><em>J, you must be getting old man. This sounds like it came from someone with grey in his sideburns.</em></p>
+
+
+	<p>Oh, they’re coming in.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73108">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Scot</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>I once heard this expressed as when you answer something immediately you’re not thinking, you’re doing a table look-up.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73109">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://onedesigncompany.com/" only_path="true" rel="nofollow">Sam Rosen</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>I don’t understand how spending your own money takes more skill 
+than spending someone else’s. What skill does spending your own money 
+require that spending another’s does not?</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73110">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Ani</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Thank you for sharing this Jason. This is surely one of your top 5 posts of all time, IMO. Thanks again!</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73112">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Cameron</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Jason, this is awesome, but can I has some Basecamp Next now?</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73113">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.fiveoeight.com/" only_path="true" rel="nofollow">Nathan</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>THIS IS WRONG AND i DISAGREE!</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73114">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.techdept.co.uk/" only_path="true" rel="nofollow">Dan Kirby</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Great post, totally relate to you.  
+What changed my perspective was a story
+Jay Chiat – who set up ad agency Chiat day – used to carry a piece of paper in his pocket
+When he got into an argument with someone – he’d pull it out. It read: ‘maybe they’re right’
+I use that advice every day</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73115">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Jayme Edwards</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Simply explained, and completely accurate. Thank you for this.</p>
+  </div>
+</div>
+<div class="post-comment basecamper" id="comment_73116">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">JF</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Dan: <strong>Love</strong> that story about Jay Chiat. Thanks for sharing.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73117">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Dmitriy Likhten</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>This is right and I agree. After the first paragraph I felt 
+almost like you were talking about me. This is exactly me, and this is 
+exactly what is holding me back. I will heed this advice.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73118">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.grownupnowwhat.com/" only_path="true" rel="nofollow">Tammy</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>What a wonderful man Mr. Wurman is to use that situation as a 
+teaching moment instead of simply blowing it off or returning the anger.
+ His kindness and willingness to not get caught up in the moment is 
+extraordinary, which is probably why it stuck with you … and now with 
+me.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73119">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://guy.com/" only_path="true" rel="nofollow">Skilled GUy</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>I instantly disagree with the title of this article.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73120">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Me</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Wow you are right you are a jerk.</p>
+
+
+	<p>Guys that was always pissed of at assholes like you that dont think before they talk</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73121">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Stacy</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Jason it was that very attitude you described, along with the 
+endless vulgarity used to dismiss and confirm, that both you and DHH 
+use, turned me off to your products and rails. I did not want my company
+ and partners to be apart of that club, and it had absolutely nothing to
+ do with the quality of your products.</p>
+
+
+	<p>I’m glad someone touched you. Change takes more effort than you ever put into your products. I wish you the best!</p>
+  </div>
+</div>
+<div class="post-comment basecamper" id="comment_73122">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">JF</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Thanks Stacy. Note: I still swear, but not <strong>at</strong> others. It’s usually in support of others. “That’s fucking great!”</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73123">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">EH</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Gilles Deleuze wrote at length about the value of extending the amount of time between stimulus and response.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73124">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://mercurycsc.com/" only_path="true" rel="nofollow">Donnie Clapp</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>I have nothing of substance to add, but thanks for this.</p>
+
+
+	<p>Kind of hits a <a href="http://sivers.org/">Derek Sivers</a> kind of note, doesn’t it?</p>
+
+
+	<p>dc</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73125">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://mercurycsc.com/" only_path="true" rel="nofollow">Donnie Clapp</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>P.S. (if you access this blog over https, the comment form submission doesn’t work.)</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73126">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.lanilogic.com/" only_path="true" rel="nofollow">Steve Woods</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Is this article a reaction to the kneejerk negative responses 
+received on the Basecamp Next video demonstration of the sheets 
+metaphor?</p>
+
+
+	<p>I agree with this article to be honest – I fear I’ve lost quite a 
+few business relationships due to me not being open enough to new ideas –
+ something I’m actively trying to change not only for fear of losing 
+respect, but also the fear of becoming stagnant and stuck in my ways.</p>
+
+
+	<p>And anyway, who’s to say what’s right and what’s wrong?  Life is one
+ long yarn of experiments, and getting things wrong might point you to 
+the right direction later down the path.</p>
+
+
+	<p>Yea, getting a bit deep…...</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73127">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://chetanislazy.com/" only_path="true" rel="nofollow">Chetan</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Daniel Kahneman has a new book out called “Thinking, Fast and 
+Slow” that’s on this exact topic. He gave a fantastic interview on 
+Charlie Rose the other night:</p>
+
+
+	<p>http://www.charlierose.com/view/interview/12185</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73128">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Hoover</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>The Kahneman book isn’t strictly about disagreements between 
+people; more about the numerous ways in which we delude ourselves and 
+make mistakes.</p>
+
+
+	<p>It’s actually somewhat discouraging…</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73129">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Justin</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Title “Give it five minutes” – Good, got my attention</p>
+
+
+	<p>First Line “A few years ago I used to be a hothead” – hmm, now I am thinking</p>
+
+
+	<p>Author “Jason F” What??....lol, I was expecting David!</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73130">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Lance Jones</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Jason, your sound advice extends beyond business and into the 
+realm of personal &amp; family relationships. Taking 5 minutes after 
+your partner expresses his/her feelings - especially if you interpret 
+those feelings as criticism - will help you build versus erode your 
+relationship. I almost lost my girlfriend of 5 years a few days ago 
+because I am too quick to defend my point of view, when I should be 
+listening quietly instead. After that near relationship disaster, I 
+decided to make the commitment to stop trying to control the world 
+around me (this is what I believe you’re ultimately describing) and just
+ sit with the discomfort that often comes with losing control or having 
+someone disagree with my core beliefs.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73131">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.guava.com.br/" only_path="true" rel="nofollow">Lucas Marinho</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>The great physicist Richard Feynman had something to say about this: http://cs.au.dk/~danvy/lafb.html</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73132">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Ivan</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>When I was a kid our project was a poster graphic of a book we 
+all read.  Then we did an in class review of everyones poster at the 
+same time.  I criticized everyone elses project vociferously when they 
+came up and no one objected.  When mine came up I didn’t say anything.  I
+ thought it was perfect, but then I realized, it wasn’t as well drawn as
+ person A, or as comprehensive as person B, but I had done the best job I
+ could and I still believed it deserved high marks.</p>
+
+
+	<p>I realized that moment (in 4th grade) that everyone thinks they’re 
+not the asshole.  They always think everyone ELSE is the asshole, but 
+guess what, you’re the asshole.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73133">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Justin</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Humility can be powerful.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73134">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Beau</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>More posts like this please.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73135">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://nateabele.com/" only_path="true" rel="nofollow">Nate Abele</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>This just about nails the very heart of the issue:</p>
+
+
+<blockquote>If your neighbor isn’t immune, neither are you.</blockquote>
+
+	<p>Basic human empathy. If everyone took that to heart, then from 
+interpersonal relationships to international relations, it would solve 
+most of the world’s problems.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73136">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Tom</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>This gut reaction stuff seems to be especially strong in the technology field. Ego seems to pay better after all.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73137">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://chipdthompson.com/" only_path="true" rel="nofollow">Chip</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>This is such a great story because I think we all have the 
+ability to be a hothead at times. It’s kind of like they saying, When 
+you think you know everything, that’s when you realize you know nothing.
+  I also think the five minute thing is great because that’s about how 
+long it takes for you to realize that you shouldn’t say what you were 
+thinking about saying, lol. This is a great piece of advice.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73138">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Kathy Sierra</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>“when only the glib win, we all lose”</p>
+
+
+	<p>http://headrush.typepad.com/creating_passionate_users/2006/04/when_only_the_g.html</p>
+
+
+	<p>Thanks for another wake-up post, Jason.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73139">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://rexblog.com/" only_path="true" rel="nofollow">Rex Hammock</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>I’m sorry, I don’t have anything to add. I just wanted to be next
+ to Kathy Sierra. ;  )  Jason, you are my hero for this post. (Kathy is 
+my hero, in general.)</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73140">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Gavin</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>This reminds me a lot of Susan Cain’s recent book, Quiet: The 
+Power of Introverts in a World That Can’t Stop Talking. The 
+fast-to-react approach is typical of the extrovert. Thinking about a 
+concept for 5 minutes before pushing back is second nature to the 
+introvert.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73141">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Rich</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>@Jason: Are you going to lock down the “Answers” site for the first five minutes after Basecamp Next launches?</p>
+
+
+	<p>I feel like this:
+http://www.youtube.com/watch?v=UnPZRRT-ZGw</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73142">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">lars</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Hi
+I always think
+” Why not”</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73143">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.stayaweso.me/" only_path="true" rel="nofollow">eric</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>“There are two things in this world that take no skill: 1. Spending other people’s money and 2. Dismissing an idea.”</p>
+
+
+	<p>that’s really deep man! I’m glad I read this article</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73144">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://danielnitsche.com/" only_path="true" rel="nofollow">Dan</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Great insight.</p>
+
+
+	<p>It’d be interesting to see what would happen to the quality and 
+quantity of comments if you had to wait 5 minutes after reading an 
+article before submitting a comment.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73145">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://prayerofthenations.com/" only_path="true" rel="nofollow">Brandon Hansen</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>“Fools find no pleasure in understanding
+but delight in airing their own opinions.”</p>
+
+
+	<p>I would say that sums it up pretty well.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73146">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://informationworkshop.org/" only_path="true" rel="nofollow">Mark Hernandez</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>I was all ready to reference the Charlie Rose interview Daniel 
+Kahneman’s “Thinking Fast And Slow” but Chetan beat me to it!  It’s 
+possible to  do both essentially simultaneously, well, at least within 5
+ minutes. The immediate response is more intuitive, and the other is 
+more analytical, kinda thing.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73147">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.themarkweiss.com/" only_path="true" rel="nofollow">Mark</a></h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>I remember the day I learned anger was a secondary responsive. 
+Until then it was so much easier to get mad at other people, then find 
+fault within myself. Thanks for sharing this great advice.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73148">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Anthony Dellos</h3>
+      <span class="post-comment-header-date">on 01 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>This made me think of the <a href="http://i41.tinypic.com/4s1dz5.jpg">plant in the boot</a> in Wall-e. Fragile. Tenuous.</p>
+
+
+	<p>I think the theme of Wall-e was valuing the fragile. It’s the 
+knee-jerk reactionary in all of us that wants to shop at buy-n-large.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73150">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Steve</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>You guys should speak:</p>
+
+
+	<p>http://www.one37.net/blog/2012/2/21/negativity.html</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73151">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://tnypxl.com/" only_path="true" rel="nofollow">Arik Jones</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <blockquote>@Dan: It’d be interesting to see what would happen to 
+the quality and quantity of comments if you had to wait 5 minutes after 
+reading an article before submitting a comment.</blockquote>
+
+	<p>I’d imagine you’d get some of best discussions anyone has seen on 37s in a long time.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73152">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Byron</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Pro-tip:  rephrase your criticisms, assertions, etc. as questions
+ before making them.  Questions are just as effective at forcing an idea
+ to be evaluated based on its merits, but leave open the possibility 
+that it could pass the guantlet and be right/correct/valuable/etc.  It 
+also makes you look like much less of an ass if it turns out to be you 
+who’s wrong, and not the idea.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73153">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Sara</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Women have been doing this for years.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73154">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://techoctave.com/c7" only_path="true" rel="nofollow">TVD</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>What is it about profanity that causes otherwise reasonable people to lose their minds?</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73155">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Shawna</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>@Sara – exactly what I was thinking when I read this.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73158">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Brad Y</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Very good articles. It is hard to accept other’s ideas.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73159">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Dumbo</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Hmmm …. nice points … let me give it 5 minutes before I post some counter arguments :)</p>
+
+
+	<p>... Just kidding … nice post!</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73161">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://watchavideo.net/" only_path="true" rel="nofollow">Watch a video</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Thanks for sharing this. I have come across this so many times and it specially true during training sessions and presentations.</p>
+
+
+	<p>Its happened both when I’m presenting and when I’m part of the 
+audience. The urge to say something that is different and make your 
+point is strong when you feel you are right. However as you point out, 
+if we give it 5 mins, it will save us from speaking too soon. Sometimes 
+the speak will come around to your POV or will arrive at the point you 
+want to make, eventually. Having the patience saves you from looking 
+like an  Hope I remember this one.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73163">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">DH</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>@Sara, @Shawna – my wife is much more controlled. She usually 
+waits five months, and then wins as I’ve no idea what the discussion is 
+about.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73164">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Shinu</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Rightly said. It’s important to kick off the ‘Give it five minutes’ thought process in an indefinite loop back of our brain.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73165">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.angelab.me/" only_path="true" rel="nofollow">Angela Bowman</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>I admire your courage for that admission.  Takes a genuine spirit
+ to recognize that fault…all too many folks never recognize that of 
+themselves.</p>
+
+
+	<p>In our house, we strive to use the words “yes, and…”, rather than “yes, but…”</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73166">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.churmmediacustomcontent.com/" only_path="true" rel="nofollow">Kimberly Porrazzo</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Simple concept, but something so many (including me) forget. 
+Thanks for the reminder and @JenelynRusso for posting the link to this.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73167">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://kreatibe.com/" only_path="true" rel="nofollow">Mario</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>My favorite frase, one I use to sign my emails with, resume this all:</p>
+
+
+	<p>“don’t think you know” (Lao Tse)</p>
+
+
+	<p>When you don’t think you know is when you are really really open to new ideas. As my master says:</p>
+
+
+	<p>“You know, the Universe knows a little more than you do, listen to him and let him guide you”</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73168">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Sohail</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Apply this to your marriage if anything!</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73169">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://jasonsack.com/" only_path="true" rel="nofollow">Jason</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>I mostly see this behavior as defensiveness due to lack of 
+experience or fear of being wrong. I can remember acting that way 
+occasionally in the early years of my career.</p>
+
+
+	<p>I’ve learned that it actually hurts the creative flow when anyone is
+ responding to a conversation in that way. Which can really have a 
+negative impact on doing good work. By contrast, once there is a good 
+positive dialog going, everyone has a lot more room to calmly disagree 
+and work through things. Just my experience. Good post.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73175">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Anthony Barone</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>After thinking, try responding with “I statements”.</p>
+
+
+	<p>e.g. Your talk really got me thinking.  I still believe your thinking has some flaws though.  Web design…</p>
+
+
+	<p>I statements are only what you think.  They are your opinion.  They help deliver a softer landing too.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73177">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.airwolfe.com/" only_path="true" rel="nofollow">Alex</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Thanks for sharing this. I feel like this is something I learned 
+in my 30’s and looking back wish I knew in my 20’s. When you listen to 
+other people’s ideas, they are more open to your ideas. Its so much more
+ powerful (and rewarding) to work together then work against each other.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73181">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Lifes Prince</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>I’ve learned that taking peoples ideas into consideration first 
+and adding to them works a lot better for me. I throw out no ones ideas 
+no matter how crazy I may think they are because like Jason said “they 
+often start out powerless”, but I know from experience that they usually
+ tend to end strong. Believe…</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73184">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="https://leavetrackapp.com/" only_path="true" rel="nofollow">Robin Fisher</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>It’s great advice. When somebody is talking, people are very 
+rarely listening. They’re waiting to speak or preparing their next 
+argument. By doing that, you don’t hear what the other person is saying 
+and more often than not misinterpret what they are saying.</p>
+
+
+	<p>It’s a skill I’m still learning and it’s a combination of patience, 
+humility (I’m not always right) and a desire to learn (other people will
+ know more and have better ideas than me).</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73187">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://blogs.u2u.net/kris/" only_path="true" rel="nofollow">Kris Vandermotten</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>So true. I’d even take it one step further: before dismissing an 
+idea you need to think about it, and before thinking about it you need 
+to understand not only the idea, but also where it came from.</p>
+
+
+	<p>In software development, you often get questions, suggestions or 
+requirements from users that don’t seem to make any sense, even when 
+thinking about them. But the point is they had reason for asking this 
+seemingly nonsense thing. Find out their reason, and often you’ll notice
+ it’s not nonsense at all. Their suggestion may not be the best way to 
+solve their problem, but their problem is real. If you dismiss their 
+suggested solution after thinking about it, that’s fine. But don’t 
+dismiss their problem. Find a solution, whether it’s the one they 
+suggested or a better one.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73191">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">jantesays </h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>React you can do in no time. It takes time to give input a proper
+ response. There lays a huge difference between responding instead of 
+simply reacting.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73192">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.killthecomics.com/" only_path="true" rel="nofollow">J. Simmons</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Would this work with blog posts? Put something up there that’s 
+hot and have a ticker that says “Comments can be made in 5 minutes”? 
+Sites with good traffic could make it work, even with the internet’s 
+attention span.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73194">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://sushilbharwani.blogspot.com/" only_path="true" rel="nofollow">sushil bharwani</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Very nice thought its so essential to actually listen understand and then suggest or discuss rather than just jumping it on.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73199">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">RDO</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Perhaps if this would’ve been put into practice, 1/2 of ReWork 
+wouldn’t have been in the final product. Many of the imperatives, 
+absolutes and extremes in that book do sound like knee-jerk reactions to
+ situations, regardless of merit. Had you waited 5 more minutes before 
+you wrote them perhaps a more centered opinion would’ve come to the 
+forth.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73200">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://kuche.myminicity.com/com" only_path="true" rel="nofollow">Harry Pachty</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Schoppenhauer said, each truth goes through 3 stages, first you ridicule it, then you fight it, then you accept it.</p>
+  </div>
+</div>
+<div class="post-comment basecamper" id="comment_73203">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">JF</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p><em>Perhaps if this would’ve been put into practice, 1/2 of 
+ReWork wouldn’t have been in the final product. Many of the imperatives,
+ absolutes and extremes in that book do sound like knee-jerk reactions 
+to situations, regardless of merit. Had you waited 5 more minutes before
+ you wrote them perhaps a more centered opinion would’ve come to the 
+forth.</em></p>
+
+
+	<p>We waited 10 years to write Rework ;)</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73206">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://test.com/" only_path="true" rel="nofollow">John Smith</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Super!</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73207">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.fixpert.com/" only_path="true" rel="nofollow">Sally Carson</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>I don’t need everyone to agree with me all the time, but I make a
+ point to avoid people who are negative or combative by default. It’s a 
+total energy-suck, and …really boring.</p>
+  </div>
+</div>
+<div class="post-comment basecamper" id="comment_73208">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">DHH</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p><i>1/2 of ReWork wouldn’t have been in the final product.</i></p>
+
+
+	<p>It wasn’t! In the last two weeks before finishing the book we cut it
+ from, I think, about 47K words to 23K words. So about half of the 
+prospective book was left on the editing floor.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73209">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://twitter.com/LucasWilk" only_path="true" rel="nofollow">Lucas Wilk</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Fabulous post Jason. I too have been learning this lesson and 
+have been applying it a lot more lately to a great benefit. Perhaps the 
+longer one lives the more one realizes that most arguments are 
+completely inconsequential in the long term, hence the propensity to be 
+more thoughtful in one’s approach to whatever it is one encounters in 
+daily life. Generally, unless the circumstances are extreme, it’s much 
+better to take a few breaths and walk away from the temptation to 
+attack.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73210">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">RG</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>This is a funny article considering less than a month ago you bit
+ off some poor kid’s head on Twitter for using some HTML code from your 
+website.. You need to follow your own advice, mate.</p>
+  </div>
+</div>
+<div class="post-comment basecamper" id="comment_73211">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">JF</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>RG: That wasn’t me. It was another hothead ;)</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73214">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Harish</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Man, That’s awesome.  So simple yet elegant.  I’m definitely going to try to get better at this, both at work and at home.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73215">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Anthony Barone</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Do folks feel hothead responses are a result of lower emotional 
+intelligence?  Do the crazy ones and misfits tend to have a lower 
+emotional IQ?  This post is starting to feel like 37signals is maturing 
+emotionally.  Is 37signals becoming less of a misfit?  I’m not sure I 
+like that ;).</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73216">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.wilcoimaging.com/" only_path="true" rel="nofollow">William Corns</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Alright Jason, I have given it five minutes and now let me tell 
+you something … Just kidding, great advise. I too, am a hot head and 
+fall into that easy trap. In my organization I try to foster a culture 
+where others think and not just bring problems to me. I find that I 
+often become the problem solver and then it is hard to get out of that 
+mode. Stephen Covey once said: “Be efficient with things, not people.” 
+There might be some relevance in there.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73217">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Dave P</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Can’t believe nobody’s mentioned it yet, but Jobs was far from 
+nurturing of other people’s ideas. There are numerous instances in the 
+Isaacson biography where the typical sequence is described:</p>
+
+
+	<p>Guy presents new idea. Jobs dismisses idea as crap. A week later, Jobs presents idea as own, now it’s great.</p>
+
+
+	<p>Jonny Ive was even the victim in one of those stories.</p>
+
+
+	<p>There, I waited five minutes…</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73220">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">RDO</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>@Dave P</p>
+
+
+	<p>Very true. Jobs was as hot-headed as they come. He didn’t seem to be the contemplative kind.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73228">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Dave P</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>@RDO</p>
+
+
+	<p>And sometimes hot-headed can be a useful part of the creative process…</p>
+
+
+	<p>I’m sure he walked away and let things stew for a while and what 
+came out of that process may have seemed different to him, even though 
+superficially it didn’t look like it to other people.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73231">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.thinkwatson.com/" only_path="true" rel="nofollow">byugrad97</a></h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Great post. We should always be testing our assumptions &amp; 
+biases before re/acting… which takes patience (something our generation 
+doesn’t have in abundance).</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73237">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Gaurav</h3>
+      <span class="post-comment-header-date">on 02 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Well, there’s a third thing which takes no skill, viz. agreeing 
+on an idea without a thought. It’s as dangerous as the two 
+aforementioned.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73244">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.shanemackintosh.com/" only_path="true" rel="nofollow">Shane</a></h3>
+      <span class="post-comment-header-date">on 03 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>I think this article has made be realize I’m probably more 
+hotheaded than what I want to admit. I now have something new to work on
+ lol. I can see that giving something the 5 minute rule is something 
+that would work and probably change the way I look at a lot of things.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73247">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">sushama Powdwal</h3>
+      <span class="post-comment-header-date">on 03 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Wonderful experience. All should learn a lesson in this competitive world.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73248">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Gran</h3>
+      <span class="post-comment-header-date">on 03 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Mr. Wurman demonstrated and asked of you what is called critical 
+thinking. It’s a fundamental component of most technical pursuit.
+The ability to suspend your reactions and disbelief, gather all relevant
+ &amp; sufficient information first, before interpreting and judging all
+ of it responsibly, in my entire career I only met a few people who did 
+this quite well. I won’t claim I am also great at it.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73249">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">irene</h3>
+      <span class="post-comment-header-date">on 03 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>With 24 hour news on tv prominent people, experts and politicians
+ are constantly being asked their opinion on events and commentary that 
+have just occurred.</p>
+
+
+	<p>This is too fast and the person responding has not had their “5 minutes” to really assess what has happened/been said.</p>
+
+
+	<p>This leads to stupid commets that the person then has to defend even
+ though it may look stupid after they reconsider the facts. --Another 
+reason why our political events seem all so confusing and hard to 
+understand and support.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73253">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.lupicageorge.eu/" only_path="true" rel="nofollow">Lupica George</a></h3>
+      <span class="post-comment-header-date">on 03 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>You’re WRO… wait…</p>
+
+
+	<p>Ah damn it, I’m kind of who you were. Need to work on that whole five minute thing.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73258">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">John</h3>
+      <span class="post-comment-header-date">on 03 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>When I was an RA in college part of our training dealt with this,
+ and a phrase that has stuck with me through the years is, “Respond, 
+don’t react.”</p>
+
+
+	<p>And that’s one of the things that sets us humans apart from the 
+animal world – we can stop, think, and decide if a response is even 
+necessary, rather than just reacting without actually thinking.</p>
+
+
+	<p>Good post!</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73259">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">pell</h3>
+      <span class="post-comment-header-date">on 03 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>I think there are two important lessons here. The first, 
+obviously, give it a moment to think about it. The second one is a 
+reflection on what you actually want – do you want to learn or do you 
+want to be right?</p>
+
+
+	<p>One thing I disagreed with is the Steve Jobs quote. To me he didn’t 
+look like a person who would actually take five minutes. He was better 
+known for calling things shit or holy in the fragment of a second. 
+(Which doesn’t mean that he didn’t reflect later.)</p>
+  </div>
+</div>
+<div class="post-comment basecamper" id="comment_73261">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">JF</h3>
+      <span class="post-comment-header-date">on 03 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>If you read more about Jobs you’ll see he was very contemplative,
+ but not always in the moment. If you watched him in interviews, you’ll 
+see often took an extended pause before he spoke. He thought a lot about
+ things. And I’d have to defer to Ive, who worked with Steve every 
+single day. I’m pretty sure he knew him better than we did.</p>
+
+
+	<p>Of course we’re all complicated creatures, full of internal and 
+external contradictions. And this wasn’t a post about Steve Jobs. I just
+ happened to think the content of the quote was particularly insightful 
+in the context of the rest of the point I was trying to make.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73262">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">ant</h3>
+      <span class="post-comment-header-date">on 03 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>jeez. i didn’t figure this was an issue for so many people. i 
+guess it boils down to lack of respect because if you respect me you’d 
+automatically consider my words. i believe there is a reason for 
+everything including and especially peoples actions. i could be certain 
+someone is wrong and still want to figure out why they’re wrong before i
+ engage them. or ask them why and how they came to a certain conclusion.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73264">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Luis</h3>
+      <span class="post-comment-header-date">on 04 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>This is good advice. I wonder how many people in the comments didn’t give 5 minutes before posting their comments. I know I did.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73266">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://justinjackson.ca/" only_path="true" rel="nofollow">Justin Jackson</a></h3>
+      <span class="post-comment-header-date">on 04 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p><strong>Loved this post.</strong></p>
+
+
+<blockquote cite="http://37signals.com/svn/posts/3124-give-it-five-minutes">@JF: Asking questions means you want to know. Ask more questions.</blockquote>
+
+	<p>This made me think of Tommy MacWilliam’s post titled <a href="http://tmac721.tumblr.com/post/17500383225/what-ive-learned-about-smart-people">What I’ve Learned About Smart People</a>:</p>
+
+
+<blockquote cite="http://tmac721.tumblr.com/post/17500383225/what-ive-learned-about-smart-people">I
+ have noticed one overarching theme among smart people: they ask 
+questions. Smart people are different. If they don’t understand 
+something, or even if they think they understand something, they’ll ask 
+questions.</blockquote>
+
+	<p>I used to think that smart, confident people could (using a gut 
+instinct) respond immediately to whatever was presented to them. Now, I 
+realize that a truly confident person seeks first to understand.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73270">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.avwebdesigns.com/" only_path="true" rel="nofollow">Lee Egstrom</a></h3>
+      <span class="post-comment-header-date">on 04 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Life is chess not checkers.</p>
+
+
+	<p>It sounds like Richard helped you learn that you should put some thought into your next move, statement or question.</p>
+
+
+	<p>Or possibly “give it 5 minutes” is his statement to any young 
+know-it-all who disagrees. That’s probably what I’ll use it for! LOL.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73272">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Jimmy Chan</h3>
+      <span class="post-comment-header-date">on 05 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>It is not true when your job is an emergency doctor.</p>
+
+
+	<p>Sometimes you haven’t enough time to decision even in seconds.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73273">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">www</h3>
+      <span class="post-comment-header-date">on 05 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>sdasdadasdsd</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73274">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">you</h3>
+      <span class="post-comment-header-date">on 05 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>test comments</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73275">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">you</h3>
+      <span class="post-comment-header-date">on 05 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Comments and tests</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73278">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://mobile.4pillarsolution.com/" only_path="true" rel="nofollow">Bob Reid</a></h3>
+      <span class="post-comment-header-date">on 05 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>There are a lot of good comments here to Jason’s really great 
+advice.  It has taken me a while as well but the following quote 
+occurred to me a few years ago: 
+“Nothing is as blinding as absolute certainty.”  
+Bob Reid ~2010</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73280">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Justin McAleer</h3>
+      <span class="post-comment-header-date">on 05 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>While inspiring, this advice is idealistic and impractical. If we
+ gave every idea five minutes, we’d never actually do anything. Genius 
+isn’t giving every idea five minutes, it’s realizing which ideas are 
+worthy of a time investment.</p>
+
+
+	<p>And I did give this five minutes.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73281">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Jennifer Showe</h3>
+      <span class="post-comment-header-date">on 05 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Excellent points.  
+Negative reactionary behavior is definitely toxic, but remember that 
+positive reactionary behavior (often overlooked because it’s so warm and
+ fuzzy) is equally so. It’s no better to vigorously agree with an 
+opinion without reviewing than it is to tear it down.</p>
+
+
+	<p>Which direction people go when they are reacting without thinking is
+ more about personality type than it is about professional expertise. In
+ business, you want to be valued for your professional expertise so it 
+makes sense to take a beat to let that shine through.</p>
+
+
+	<p>I think you net out in a good place, it’s always better to think before acting.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73283">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Seth </h3>
+      <span class="post-comment-header-date">on 05 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>I’m not even going to read this article. I’m just going to assume its stupid and not worth my time.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73284">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Anonymous Coward</h3>
+      <span class="post-comment-header-date">on 05 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>What I love about this article is that this rewiring starts making you as smart as you think you are…..and more mature.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73287">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://aryanpour.com/" only_path="true" rel="nofollow">Farsi dictionary</a></h3>
+      <span class="post-comment-header-date">on 06 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Great advice, thank you Jason.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73410">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author">Rajat</h3>
+      <span class="post-comment-header-date">on 07 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>Thanks Jason. A great article, very well written. I liked it may be because i gave 5 minutes to think what you meant. Thanks.</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73503">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.shaunmayfield.com/" only_path="true" rel="nofollow">Shaun Mayfield</a></h3>
+      <span class="post-comment-header-date">on 07 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>After 5 minutes of reading and then 5 minutes of consideration I decided that the push back wasn’t needed. It works!</p>
+
+
+	<p>On a serious note, this is powerful. Not only the knowledge, but the application as well. Thanks!</p>
+  </div>
+</div>
+<div class="post-comment" id="comment_73543">
+  <div class="post-comment-header">
+    
+          <h3 class="post-comment-header-author"><a href="http://www.ponoko.com/" only_path="true" rel="nofollow">Peter</a></h3>
+      <span class="post-comment-header-date">on 08 Mar 12</span>
+      </div>
+
+  <div class="post-comment-body">
+    <p>“There are two things in this world that take no skill: 1. Spending other people’s money and 2. Dismissing an idea.”</p>
+
+
+	<p>Love that statement.</p>
+  </div>
+</div>
+
+</div>
+
+
+      <div class="post-comments-form" data-comments-form="">
+      <h2>This discussion <em>is</em> closed.</h2>
+    </div>
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+
+      var all_comments = $('[data-comments]');
+      var comment_form = $('[data-comments-form]');
+      var expandable = $('.post-comments-info-expandable');
+
+      function expand_comments() {
+        all_comments.fadeIn();
+        comment_form.fadeIn();
+      }
+
+      expandable.click(function(){
+        expand_comments();
+        $(this).removeClass('post-comments-info-expandable').addClass('expanded');
+        window.location.hash = "#comments"
+      });
+
+      $('[data-elastic]').elastic();
+    });
+  </script>
+</section>
+
+<section class="post-author">
+  <figure class="post-author-avatar">
+    <a href="https://signalvnoise.com/writers/jf"><img alt="Jason Fried" src="Jason%20Fried%20-%20Give%20it%20five%20minutes_files/995-avatar.gif" width="100" height="100"></a>
+  </figure>
+
+  <div class="post-author-bio">
+    <h2>About Jason Fried</h2>
+    <p>Jason co-founded Basecamp back in 1999. He also co-authored <a href="http://37signals.com/rework">REWORK</a>,
+ the New York Times bestselling book on running a "right-sized" 
+business. Co-founded, co-authored... Can he do anything on his own?</p>
+    <p>Read all of <a href="https://signalvnoise.com/writers/jf">Jason Fried’s posts</a>, and <a href="https://twitter.com/jasonfried">follow Jason Fried on Twitter</a>.</p>
+  </div>
+</section>
+
+<section class="post-similar-articles">
+  
+    If you liked this  post by Jason Fried, you’ll probably like reading
+    <a href="https://signalvnoise.com/posts/883-advertising-people-pitch-us">Advertising People: Pitch Us</a>, <a href="https://signalvnoise.com/posts/1245-the-vice-fund-the-ultimate-investment-for-todays-financial-environment">The Vice Fund: The ultimate investment for today's financial environment</a>, and <a href="https://signalvnoise.com/posts/2580-why-non-profit-pricing">Why non-profit pricing?</a>  
+</section>
+
+      </div>
+
+      <footer class="footer">
+  <section class="footer-browse">
+    <div class="footer-browse-best">
+      <h3><strong>New here?</strong> Start with our <span class="visible-desktop">best</span> hits:</h3>
+      <ul>
+        <li><a href="https://signalvnoise.com/posts/1539-writing-decisions-saving-space-without-losing-meaning">Writing Decisions: Saving space without losing meaning</a></li><li><a href="https://signalvnoise.com/posts/3124-give-it-five-minutes">Give it five minutes</a></li><li><a href="https://signalvnoise.com/posts/1748-forget-the-resume-kill-on-the-cover-letter">Forget the resume, kill on the cover letter</a></li><li><a href="https://signalvnoise.com/posts/2904-forget-passion-focus-on-proces">Forget passion, focus on process</a></li><li><a href="https://signalvnoise.com/posts/2794-how-to-get-good-at-making-money">How to get good at making money</a></li>
+        <li><a href="https://signalvnoise.com/popular">… all of “The Best of Signal v. Noise”</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-browse-latest">
+      <h3><strong>Back again?</strong> Catch <span class="visible-desktop">up on</span> our latest<span class="visible-desktop"> posts</span>:</h3>
+      <ul>
+        
+          <li><a href="https://signalvnoise.com/posts/3980-basecamp-hq-mural">Basecamp HQ Mural</a></li>
+        
+          <li><a href="https://signalvnoise.com/posts/3979-chocoholic-anonymous">Chocoholic Anonymous</a></li>
+        
+          <li><a href="https://signalvnoise.com/posts/3978-building-basecamp-3-mobile-prototypes">Building Basecamp 3: Mobile Prototypes</a></li>
+        
+          <li><a href="https://signalvnoise.com/posts/3977-i-dont-want-to-be-a-winner">I don’t want to be a winner</a></li>
+        
+          <li><a href="https://signalvnoise.com/posts/3973-natasha-the-robot-murashev-joins-basecamp">Natasha “The Robot” Murashev joins Basecamp</a></li>
+        
+        <li><a href="https://signalvnoise.com/archives">… all posts on Signal v. Noise</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="footer-search">
+    <h2>Search<span class="visible-desktop"> for articles or writers</span></h2>
+    <form method="get" action="https://www.google.com/search">
+      <input type="hidden" name="sitesearch" value="signalvnoise.com">
+      <input name="q" placeholder="Search Signal v. Noise…" type="text">
+    </form>
+  </section>
+
+  <section class="footer-categories">
+    <ul>
+      <h2>Explore<span class="visible-desktop"> 15 years of</span> Signal v. Noise</h2>
+
+      
+        <li><a href="https://signalvnoise.com/business">Business</a></li>
+      
+        <li><a href="https://signalvnoise.com/design">Design</a></li>
+      
+        <li><a href="https://signalvnoise.com/programming">Programming</a></li>
+      
+        <li><a href="https://signalvnoise.com/support">Support</a></li>
+      
+        <li><a href="https://signalvnoise.com/sysadmin">Sysadmin</a></li>
+      
+        <li><a href="https://signalvnoise.com/writing">Writing</a></li>
+      
+
+      <li><a href="https://signalvnoise.com/popular">Best of</a></li>
+      <li><a href="https://signalvnoise.com/archives">Everything</a></li>
+    </ul>
+  </section>
+
+  <section class="footer-copyright">
+    <p>
+      Meet <a href="https://signalvnoise.com/writers/">the writers</a> of <a href="https://signalvnoise.com/">Signal v. Noise</a>.
+      If you like what you’re reading, check out <a href="https://basecamp.com/books?source=SvN">our best-selling books REWORK and REMOTE</a>.
+    </p>
+    <p>
+      Content copyright ©1999-2020 <a href="https://basecamp.com/?source=SvN">Basecamp</a>.
+      Subscribe to our <a href="https://signalvnoise.com/posts.rss">RSS</a>.
+    </p>
+    <p>Enjoy your <span class="happyday--dayofweek">Friday</span>.</p>
+  </section>
+</footer>
+
+    </div>
+
+  
+  <script type="text/javascript"> Timing.mark('lastbyte'); if(typeof(Beanstalk) != 'undefined') {Beanstalk.Timing.init(Timing.times);} </script>
+
+</body></html>
