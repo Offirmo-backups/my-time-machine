@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<!-- html5_006 : WTE micro template -->
+
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Offirmo's internet archive</title>
+
+	<link rel="stylesheet" type="text/css"
+			href="https://cdn.jsdelivr.net/gh/Offirmo/offirmo-monorepo@master/3-advanced--browser/view-css/dist/offirmo-reset%2Butils.css"/>
+
+	<style type="text/css">
+	</style>
+</head>
+
+<h1>…</h1>
+
+<p>
+	This is my <a href="https://github.com/Offirmo/ama">personal</a> internet archive hosted on GitHub.
+</p>
+<p>
+	I'm concerned over disappearing articles:
+	It happened for critical pieces I wanted to share with colleagues or friends,
+	only to discover they disappeared from the internet.
+	I'm now storing some of them in this repo.
+</p>
+<p>
+	Of course, I don't mean to infringe on rightful copyrights, this is a <strong>backup</strong>.
+	There is a <strong>robots.txt to prevent those files from being indexed</strong>.
+	Thus this backup shouldn't compete with its canonical content.
+</p>
+
+<p>Backuped content:</p>
+<ul>
+	<li>
+		<a href="./Dan%20Abramov%20-%20Just%20JavaScript/01.%20Mental%20Models.html"><h2>Dan Abramov's "Just JavaScript" online course</h2>
+			<blockquote>Just JavaScript is my distilled mental model of how JavaScript works</blockquote>
+		</a>
+	</li>
+</ul>
+
+
+<script>
+	document.querySelector('h1').textContent = document.title
+	Array.prototype.forEach.call(document.querySelectorAll('a'), function (el) {
+		el.href || (el.href = el.text)
+	})
+</script>
+
+<small>20201105</small>
