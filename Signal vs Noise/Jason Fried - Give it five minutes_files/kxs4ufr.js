@@ -1,18 +1,18 @@
 /*
  * The Typekit service used to deliver this font or fonts for use on websites
  * is provided by Adobe and is subject to these Terms of Use
- * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * https://www.adobe.com/products/eulas/tou_typekit. For font license
  * information, see the list below.
  *
  * acta-display:
- *   - http://typekit.com/eulas/000000000000000000014175
- *   - http://typekit.com/eulas/000000000000000000014171
+ *   - https://typekit.com/eulas/000000000000000000014175
+ *   - https://typekit.com/eulas/000000000000000000014171
  * kepler-std:
- *   - http://typekit.com/eulas/000000000000000000013146
- *   - http://typekit.com/eulas/000000000000000000013141
- *   - http://typekit.com/eulas/00000000000000000001313f
- *   - http://typekit.com/eulas/000000000000000000013142
- *   - http://typekit.com/eulas/000000000000000000013143
+ *   - https://typekit.com/eulas/000000000000000000013146
+ *   - https://typekit.com/eulas/000000000000000000013141
+ *   - https://typekit.com/eulas/00000000000000000001313f
+ *   - https://typekit.com/eulas/000000000000000000013142
+ *   - https://typekit.com/eulas/000000000000000000013143
  *
  * © 2009-2020 Adobe Systems Incorporated. All Rights Reserved.
  */
